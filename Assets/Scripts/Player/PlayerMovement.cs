@@ -1,4 +1,5 @@
 using UnityEngine;
+using Input;
 
 namespace PlayerScripts
 {

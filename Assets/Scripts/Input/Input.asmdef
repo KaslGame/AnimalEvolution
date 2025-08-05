@@ -1,8 +1,8 @@
 {
-    "name": "PlayerScripts",
+    "name": "Input",
     "rootNamespace": "",
     "references": [
-        "GUID:f6d4d0b1470d87d49a408e9a73b2076c"
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [
