@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.bananaparty.webutility": "https://github.com/forcepusher/com.bananaparty.webutility.git#4.0.0",
     "com.unity.collab-proxy": "2.8.2",
+    "com.unity.feature.2d": "2.0.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.inputsystem": "1.14.1",
     "com.unity.textmeshpro": "3.0.7",

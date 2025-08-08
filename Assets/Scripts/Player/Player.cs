@@ -2,16 +2,27 @@ using UnityEngine;
 
 namespace PlayerScripts
 {
+    [RequireComponent(typeof(PickUper))]
     public class Player : MonoBehaviour
     {
-        private const int _scoreAdded = 50; // Переименовать
-        
+        [SerializeField] private float _scaleFactor;
 
-        private int _level;
-        private float _currentScore;
+        private PickUper _pickUper;
 
-        private float _needScore => _level * _scoreAdded;
+        private PlayerStats _playerStats = new PlayerStats();
+        private PlayerScaler _playerScaler;
 
+        private void Awake()
+        {
+            _playerScaler = new PlayerScaler(transform, _playerStats , _scaleFactor);
+            _pickUper = GetComponent<PickUper>();
+            
+            _pickUper.Init(_playerStats);
+        }
 
+        public IPlayerStats GetPlayerStats()
+        {
+            return _playerStats;
+        }
     }
 }

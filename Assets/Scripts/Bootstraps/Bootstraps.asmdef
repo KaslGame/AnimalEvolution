@@ -1,0 +1,19 @@
+{
+    "name": "Bootstraps",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5",
+        "GUID:f6d4d0b1470d87d49a408e9a73b2076c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WebGL"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

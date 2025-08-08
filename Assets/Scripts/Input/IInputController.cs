@@ -4,6 +4,6 @@ namespace Input
 {
     public interface IInputController
     {
-        Vector3 Direction { get; }
+        Vector3 GetDirection();
     }
 }

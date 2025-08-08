@@ -1,14 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace Input
 {
-    public class MobileController : InputController
+    public class MobileController : IInputController
     {
-        [SerializeField] private Joystick _joystick;
+        private Joystick _joystick;
 
-        protected override void ReadMove()
+        public MobileController(Joystick joystick)
         {
-            ChangeDirection(_joystick.Direction);
+            _joystick = joystick ?? throw new ArgumentNullException(nameof(joystick));
+        }
+
+        public Vector3 GetDirection()
+        {
+            return new Vector3(_joystick.Direction.x, 0, _joystick.Direction.y);
         }
     }
 }
