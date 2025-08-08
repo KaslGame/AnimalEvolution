@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlayerScripts
 {
-    public class PlayerScaler : IDisposable
+    public class PlayerScaler : IDisposable, IPlayerScaler
     {
         private Transform _transform;
         private IPlayerStats _playerStats;

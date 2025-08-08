@@ -1,8 +1,9 @@
+using log4net.Core;
 using System;
 
 namespace PlayerScripts
 {
-    public class PlayerStats : IPlayerStats, ILevelChanger
+    public class PlayerStats : IPlayerStats
     {
         private int _costLevelScore = 50;
 
@@ -28,18 +29,15 @@ namespace PlayerScripts
             ScoreChanged?.Invoke(_currentScore, _needScore);
         }
 
-        public void SetLevel(int level)
-        {
-            _currentScore = 0;
-            _level = level;
-
-            LevelChanged?.Invoke(_level);
-        }
-
         private void TryUpdateLevel()
         {
             if (_currentScore >= _needScore)
-                SetLevel(_level + 1);
+            {
+                _currentScore = 0;
+                _level++;
+
+                LevelChanged?.Invoke(_level);
+            }
         }
     }
 }

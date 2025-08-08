@@ -1,25 +1,23 @@
-using PlayerScripts;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.PlayerUI
 {
     public class ProgressBar : MonoBehaviour
     {
-        [SerializeField] private Player _player;
         [SerializeField] private TextMeshProUGUI _level;
         [SerializeField] private Image _filedImage;
         [SerializeField] private TextMeshProUGUI _score;
 
         private IPlayerStats _playerStats;
 
-        private void Awake()
+        public void Initialize(IPlayerStats stats)
         {
-            _playerStats = _player.GetPlayerStats();
+            _playerStats = stats;
         }
 
-        private void OnEnable()
+        private void Start()
         {
             _playerStats.LevelChanged += OnLevelChanged;
             _playerStats.ScoreChanged += OnScoreChanged;
