@@ -1,17 +1,49 @@
 using PlayerScripts;
 using UnityEngine;
 
-namespace Food
+namespace FoodScripts
 {
-    public class Food : MonoBehaviour
+    [RequireComponent(typeof(Outline))]
+    public class Food : MonoBehaviour, IFood
     {
         [SerializeField] private int _minLevel;
         [SerializeField] private float _score;
+
+        private Outline _outline;
+        private bool _isEaten;
+
+        public int MinLevel => _minLevel;
+        public bool IsEaten => _isEaten;
+
+        private void Awake()
+        {
+            _outline = GetComponent<Outline>(); 
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out IPickUper pickUper))
                 TryCollect(pickUper);
+        }
+
+        public void ActiveOutline()
+        {
+            _outline.enabled = true;
+        }
+
+        public void DeactivateOutline()
+        {
+            _outline.enabled = false;
+        }
+
+        public void SetActive(bool active)
+        {
+            gameObject.SetActive(active);
+        }
+
+        public Vector3 GetPosition()
+        {
+            return gameObject.transform.position;
         }
 
         private void TryCollect(IPickUper pickUper)
@@ -20,6 +52,7 @@ namespace Food
             {
                 pickUper.PickUp(_score);
                 gameObject.SetActive(false);
+                _isEaten = true;
             }
         }
     }

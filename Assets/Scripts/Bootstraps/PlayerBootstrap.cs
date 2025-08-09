@@ -16,30 +16,34 @@ namespace Bootstraps
         [SerializeField] private List<CharacterData> _characters = new List<CharacterData>();
         [SerializeField] private ProgressBar _progressBar;
         [SerializeField] private PickUper _pickUper;
+        [SerializeField] private FoodBootstrap _foodBootstrap;
 
         [SerializeField] private float _scaleFactor = 0.1f;
 
         public bool IsMobile;
 
         private IInputController _controller;
+        private PlayerStats _playerStats;
 
         private void Awake()
         {
             InputInitialize();
             CharacterInitialize();
+
+            _foodBootstrap.Initialize(_playerStats, _movement.transform);
         }
 
         private void CharacterInitialize()
         {
-            PlayerStats playerStats = new PlayerStats();
-            PlayerScaler scaler = new PlayerScaler(_movement.transform, playerStats, _scaleFactor);
+            _playerStats = new PlayerStats();
+            PlayerScaler scaler = new PlayerScaler(_movement.transform, _playerStats, _scaleFactor);
 
             List<CharacterData> sortedCharacter = _characters.OrderBy(player => player.MinLevel).ToList();
 
-            CharacterChanger characterChanger = new CharacterChanger(playerStats, sortedCharacter, _player, scaler);
+            CharacterChanger characterChanger = new CharacterChanger(_playerStats, sortedCharacter, _player, scaler);
 
-            _progressBar.Initialize(playerStats);
-            _pickUper.Init(playerStats);
+            _progressBar.Initialize(_playerStats);
+            _pickUper.Init(_playerStats);
         }
 
         private void InputInitialize()
