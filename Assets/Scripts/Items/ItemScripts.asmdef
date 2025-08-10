@@ -1,0 +1,16 @@
+{
+    "name": "ItemScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3606f90cd021c8146aa042500a751c2b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,7 +1,6 @@
 using CharacterSystem;
 using Input;
 using PlayerScripts;
-using UI.PlayerUI;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,8 +10,6 @@ namespace Bootstraps
     public class PlayerBootstrap : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [SerializeField] private Joystick _joystick;
-        [SerializeField] private PlayerMovement _movement;
         [SerializeField] private List<CharacterData> _characters = new List<CharacterData>();
         [SerializeField] private ProgressBar _progressBar;
         [SerializeField] private PickUper _pickUper;
@@ -20,23 +17,19 @@ namespace Bootstraps
 
         [SerializeField] private float _scaleFactor = 0.1f;
 
-        public bool IsMobile;
-
-        private IInputController _controller;
         private PlayerStats _playerStats;
 
         private void Awake()
         {
-            InputInitialize();
             CharacterInitialize();
 
-            _foodBootstrap.Initialize(_playerStats, _movement.transform);
+            _foodBootstrap.Initialize(_playerStats, _player.transform);
         }
 
         private void CharacterInitialize()
         {
             _playerStats = new PlayerStats();
-            PlayerScaler scaler = new PlayerScaler(_movement.transform, _playerStats, _scaleFactor);
+            PlayerScaler scaler = new PlayerScaler(_player.transform, _playerStats, _scaleFactor);
 
             List<CharacterData> sortedCharacter = _characters.OrderBy(player => player.MinLevel).ToList();
 
@@ -44,28 +37,6 @@ namespace Bootstraps
 
             _progressBar.Initialize(_playerStats);
             _pickUper.Init(_playerStats);
-        }
-
-        private void InputInitialize()
-        {
-            if (IsMobile)
-            {
-                _controller = new MobileController(_joystick);
-            }
-            else
-            {
-                PlayerInput playerInput = new PlayerInput();
-
-                _controller = new DesktopController(playerInput);
-                HideJoystick();
-            }
-
-            _movement.SetController(_controller);
-        }
-
-        private void HideJoystick()
-        {
-            _joystick.gameObject.SetActive(false);
         }
     }
 }

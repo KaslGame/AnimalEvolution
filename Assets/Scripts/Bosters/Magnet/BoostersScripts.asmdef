@@ -1,0 +1,18 @@
+{
+    "name": "BoostersScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2eccd6816d23b7240ba0745c656f6be7",
+        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5",
+        "GUID:f6d4d0b1470d87d49a408e9a73b2076c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -102,6 +102,15 @@ namespace Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Booster"",
+                    ""type"": ""Button"",
+                    ""id"": ""03a2b1da-5fb5-4144-957e-83168094f3a8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -159,6 +168,17 @@ namespace Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""342d59cb-3925-4623-b40d-22bab58fd5e9"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Booster"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +194,7 @@ namespace Input
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+            m_Player_Booster = m_Player.FindAction("Booster", throwIfNotFound: true);
         }
 
         ~@PlayerInput()
@@ -255,6 +276,7 @@ namespace Input
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
+        private readonly InputAction m_Player_Booster;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -270,6 +292,10 @@ namespace Input
             /// Provides access to the underlying input action "Player/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_Player_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Booster".
+            /// </summary>
+            public InputAction @Booster => m_Wrapper.m_Player_Booster;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -299,6 +325,9 @@ namespace Input
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Booster.started += instance.OnBooster;
+                @Booster.performed += instance.OnBooster;
+                @Booster.canceled += instance.OnBooster;
             }
 
             /// <summary>
@@ -313,6 +342,9 @@ namespace Input
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Booster.started -= instance.OnBooster;
+                @Booster.performed -= instance.OnBooster;
+                @Booster.canceled -= instance.OnBooster;
             }
 
             /// <summary>
@@ -373,6 +405,13 @@ namespace Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Booster" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnBooster(InputAction.CallbackContext context);
         }
     }
 }

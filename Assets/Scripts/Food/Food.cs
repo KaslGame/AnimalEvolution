@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FoodScripts
 {
     [RequireComponent(typeof(Outline))]
-    public class Food : MonoBehaviour, IFood
+    public class Food : MonoBehaviour, IFood, IEdible
     {
         [SerializeField] private int _minLevel;
         [SerializeField] private float _score;
@@ -23,7 +23,8 @@ namespace FoodScripts
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out IPickUper pickUper))
-                TryCollect(pickUper);
+                if (pickUper.Level >= _minLevel)
+                    Collect(pickUper);
         }
 
         public void ActiveOutline()
@@ -46,14 +47,11 @@ namespace FoodScripts
             return gameObject.transform.position;
         }
 
-        private void TryCollect(IPickUper pickUper)
+        public void Collect(IPickUper pickUper)
         {
-            if (pickUper.Level >= _minLevel)
-            {
-                pickUper.PickUp(_score);
-                gameObject.SetActive(false);
-                _isEaten = true;
-            }
+            pickUper.PickUp(_score);
+            gameObject.SetActive(false);
+            _isEaten = true;
         }
     }
 }

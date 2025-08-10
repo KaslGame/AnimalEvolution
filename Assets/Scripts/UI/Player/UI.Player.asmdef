@@ -1,15 +1,14 @@
 {
-    "name": "UI.PlayerUI",
+    "name": "UI.Player",
     "rootNamespace": "",
     "references": [
-        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:6546d7765b4165b40850b3667f981c26"
+        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5",
+        "GUID:b5c4114867f780443a0116601ecb147c",
+        "GUID:3606f90cd021c8146aa042500a751c2b"
     ],
     "includePlatforms": [],
-    "excludePlatforms": [
-        "WebGL"
-    ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

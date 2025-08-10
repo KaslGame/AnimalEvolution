@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace Input
 {
-    public class DesktopController : IInputController, IDisposable
+    public class DesktopController : IInputController, ISubscribable
     {
         private PlayerInput _playerInput;
 
         public DesktopController(PlayerInput playerInput)
         {
             _playerInput = playerInput ?? throw new ArgumentNullException(nameof(playerInput));
-
-            _playerInput.Enable();
         }
+
+        public event Action ButtonPerformed;
 
         public Vector3 GetDirection()
         {
@@ -21,9 +21,23 @@ namespace Input
             return new Vector3(direction.x, 0, direction.y);
         }
 
-        public void Dispose()
+        public void Subscribe()
         {
+            _playerInput.Enable();
+
+            _playerInput.Player.Booster.performed += OnBusterPerformed;
+        }
+
+        public void Unsubscribe()
+        {
+            _playerInput.Player.Booster.performed -= OnBusterPerformed;
+
             _playerInput.Disable();
+        }
+
+        private void OnBusterPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            ButtonPerformed?.Invoke();
         }
     }
 }

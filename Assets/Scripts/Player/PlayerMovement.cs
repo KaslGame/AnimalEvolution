@@ -20,7 +20,8 @@ namespace PlayerScripts
 
         private void Update()
         {
-            _direction = _inputController.GetDirection();
+            if (_inputController != null)
+                _direction = _inputController.GetDirection();
         }
 
         private void FixedUpdate()
