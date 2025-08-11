@@ -1,9 +1,9 @@
 using CharacterSystem;
-using Input;
 using PlayerScripts;
-using UnityEngine;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using CameraScripts;
 
 namespace Bootstraps
 {
@@ -14,6 +14,7 @@ namespace Bootstraps
         [SerializeField] private ProgressBar _progressBar;
         [SerializeField] private PickUper _pickUper;
         [SerializeField] private FoodBootstrap _foodBootstrap;
+        [SerializeField] private CameraPursuer _cameraPersuer;
 
         [SerializeField] private float _scaleFactor = 0.1f;
 
@@ -23,6 +24,7 @@ namespace Bootstraps
         {
             CharacterInitialize();
 
+            _cameraPersuer.Initialize(_player.transform, _playerStats);
             _foodBootstrap.Initialize(_playerStats, _player.transform);
         }
 

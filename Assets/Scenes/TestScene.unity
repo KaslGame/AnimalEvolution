@@ -537,7 +537,7 @@ MonoBehaviour:
   _joystick: {fileID: 2929252284200771481}
   _busterButton: {fileID: 143585104}
   _booster: {fileID: 1384907471}
-  IsMobile: 1
+  IsMobile: 0
 --- !u!4 &620727695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8440981636295761466, guid: 42d87ef67e3421d48ad5870fcf684bd8, type: 3}
@@ -629,6 +629,7 @@ GameObject:
   - component: {fileID: 842597676}
   - component: {fileID: 842597675}
   - component: {fileID: 842597674}
+  - component: {fileID: 842597677}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -703,13 +704,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842597673}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33861834, y: -0, z: -0, w: 0.9409238}
-  m_LocalPosition: {x: 0.3, y: 7.11, z: -9.07}
+  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 0.3, y: 7.11, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 39.585, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+--- !u!114 &842597677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842597673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4389ce756144224f840b480877b8010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothSpeed: 0.2
+  _tiltAngle: 50
+  _zOffset: -4
+  _height: 5
 --- !u!1 &876156128
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +996,7 @@ MonoBehaviour:
   _progressBar: {fileID: 1798267397825177090}
   _pickUper: {fileID: 8606696138337562730}
   _foodBootstrap: {fileID: 1207546146}
+  _cameraPersuer: {fileID: 842597677}
   _scaleFactor: 0.1
 --- !u!4 &1199119040
 Transform:
