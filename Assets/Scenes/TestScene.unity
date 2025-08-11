@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodsObject: {fileID: 1098450547}
-  _drawDistance: 12
+  _drawDistance: 14
 --- !u!4 &1301221543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8440981636295761466, guid: 42d87ef67e3421d48ad5870fcf684bd8, type: 3}

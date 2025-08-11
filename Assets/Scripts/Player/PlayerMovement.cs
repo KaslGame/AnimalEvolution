@@ -36,7 +36,8 @@ namespace PlayerScripts
 
         private void Move()
         {
-            _rigidbody.MovePosition(_rigidbody.position + _direction * _speed * Time.fixedDeltaTime);
+            Vector3 newVelocity = new(_direction.x, _rigidbody.velocity.y, _direction.z);
+            _rigidbody.velocity = newVelocity * _speed;
         }
     }
 }
