@@ -1,6 +1,6 @@
-using Input;
-using UnityEngine.UI;
+using CommonInterfaces;
 using System;
+using UnityEngine.UI;
 
 namespace GameBehaviors
 {

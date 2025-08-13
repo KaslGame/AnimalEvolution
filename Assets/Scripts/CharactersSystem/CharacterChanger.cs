@@ -1,4 +1,3 @@
-using PlayerScripts;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +9,13 @@ namespace CharacterSystem
         private List<CharacterData> _characters;
         private IPlayerStats _stats;
         private IPlayerScaler _scaler;
-        private Player _player;
+        private GameObject _player;
 
         private MeshFilter _meshFilter;
         private MeshRenderer _meshRenderer;
         private BoxCollider _collider;
 
-        public CharacterChanger(IPlayerStats stats, List<CharacterData> characters, Player playerObject, IPlayerScaler scaler)
+        public CharacterChanger(IPlayerStats stats, List<CharacterData> characters, GameObject playerObject, IPlayerScaler scaler)
         {
             _stats = stats ?? throw new ArgumentNullException(nameof(stats));
             _characters = characters ?? throw new ArgumentNullException(nameof(characters));

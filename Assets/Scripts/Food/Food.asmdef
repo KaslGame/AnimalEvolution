@@ -2,7 +2,8 @@
     "name": "Food",
     "rootNamespace": "",
     "references": [
-        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5"
+        "GUID:0d2bb01cdbf302b4ab3db1fb2f0e19c5",
+        "GUID:572bd94c761662c4d863342977865252"
     ],
     "includePlatforms": [],
     "excludePlatforms": [

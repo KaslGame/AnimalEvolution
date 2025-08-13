@@ -1,4 +1,4 @@
-using BoostersScripts;
+using CommonInterfaces;
 using GameBehaviors;
 using Input;
 using PlayerScripts;
@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UI.Menu;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
 
 public class InputBoostrap : MonoBehaviour
 {

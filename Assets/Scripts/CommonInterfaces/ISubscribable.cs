@@ -1,4 +1,4 @@
-﻿namespace Input
+﻿namespace CommonInterfaces
 {
     public interface ISubscribable
     {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 304297402070326640}
   - component: {fileID: 8267461090129973361}
   - component: {fileID: 8892405392242113026}
+  - component: {fileID: -4632615620995660847}
   - component: {fileID: 3737139636564932069}
   - component: {fileID: 3173474610515899312}
   - component: {fileID: 2601718989141318456}
@@ -110,6 +111,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.19387609
   m_Center: {x: 0, y: 0.11244245, z: -0.000000014901165}
+--- !u!135 &-4632615620995660847
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900451702472620377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.19387609
+  m_Center: {x: 0, y: 0.11244245, z: -0.000000014901165}
 --- !u!114 &3737139636564932069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minLevel: 2
   _score: 75
+  _solidCollider: {fileID: 8892405392242113026}
+  _trigger: {fileID: -4632615620995660847}
 --- !u!114 &2601718989141318456
 MonoBehaviour:
   m_ObjectHideFlags: 0

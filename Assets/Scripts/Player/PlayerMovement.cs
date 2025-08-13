@@ -36,7 +36,7 @@ namespace PlayerScripts
 
         private void Move()
         {
-            Vector3 newVelocity = new(_direction.x, _rigidbody.velocity.y, _direction.z);
+            Vector3 newVelocity = new(_direction.x, -0.1f, _direction.z);
             _rigidbody.velocity = newVelocity * _speed;
         }
     }

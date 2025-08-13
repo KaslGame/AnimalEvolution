@@ -8,9 +8,12 @@ namespace FoodScripts
     {
         [SerializeField] private int _minLevel;
         [SerializeField] private float _score;
+        [SerializeField] private Collider _solidCollider;
+        [SerializeField] private Collider _trigger;
 
         private Outline _outline;
         private bool _isEaten;
+
 
         public int MinLevel => _minLevel;
         public bool IsEaten => _isEaten;
@@ -18,11 +21,13 @@ namespace FoodScripts
         private void Awake()
         {
             _outline = GetComponent<Outline>(); 
+            _trigger.isTrigger = true;
+            _trigger.enabled = false;
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.collider.TryGetComponent(out IPickUper pickUper))
+            if (other.TryGetComponent(out IPickUper pickUper))
                 if (pickUper.Level >= _minLevel)
                     Collect(pickUper);
         }
@@ -52,6 +57,12 @@ namespace FoodScripts
             pickUper.PickUp(_score);
             gameObject.SetActive(false);
             _isEaten = true;
+        }
+
+        public void SetPassable(bool passable)
+        {
+            _trigger.enabled = passable;
+            _solidCollider.enabled = !passable;
         }
     }
 }

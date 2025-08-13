@@ -9,7 +9,7 @@ namespace Bootstraps
 {
     public class PlayerBootstrap : MonoBehaviour
     {
-        [SerializeField] private Player _player;
+        [SerializeField] private GameObject _playerModel;
         [SerializeField] private List<CharacterData> _characters = new List<CharacterData>();
         [SerializeField] private ProgressBar _progressBar;
         [SerializeField] private PickUper _pickUper;
@@ -25,19 +25,19 @@ namespace Bootstraps
         {
             CharacterInitialize();
 
-            _cameraPersuer.Initialize(_player.transform, _playerStats);
-            _foodBootstrap.Initialize(_playerStats, _player.transform);
+            _cameraPersuer.Initialize(_playerModel.transform, _playerStats);
+            _foodBootstrap.Initialize(_playerStats, _playerModel.transform);
             _boosterBootstrap.SetPlayerStats(_playerStats);
         }
 
         private void CharacterInitialize()
         {
             _playerStats = new PlayerStats();
-            PlayerScaler scaler = new PlayerScaler(_player.transform, _playerStats, _scaleFactor);
+            PlayerScaler scaler = new PlayerScaler(_playerModel.transform, _playerStats, _scaleFactor);
 
             List<CharacterData> sortedCharacter = _characters.OrderBy(player => player.MinLevel).ToList();
 
-            CharacterChanger characterChanger = new CharacterChanger(_playerStats, sortedCharacter, _player, scaler);
+            CharacterChanger characterChanger = new CharacterChanger(_playerStats, sortedCharacter, _playerModel, scaler);
 
             _progressBar.Initialize(_playerStats);
             _pickUper.Init(_playerStats);

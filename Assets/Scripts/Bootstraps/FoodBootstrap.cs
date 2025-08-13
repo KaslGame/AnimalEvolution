@@ -3,6 +3,7 @@ using FoodScripts;
 using System.Collections.Generic;
 using System.Linq;
 using PlayerScripts;
+using CommonInterfaces;
 
 namespace Bootstraps
 {
@@ -11,32 +12,46 @@ namespace Bootstraps
         [SerializeField] private GameObject _foodsObject;
         [SerializeField] private float _drawDistance;
 
-        private IUpdateable _foodsViewer;
-
         private PlayerStats _playerStats;
         private Transform _playerTransform;
 
-        private void Start()
+        private List<ISubscribable> _subscribables = new List<ISubscribable>();
+        private List<IUpdateable> _updateables = new List<IUpdateable>();
+
+        private void OnEnable()
         {
-            FoodsViewerInit();
+            foreach (var subscribable in _subscribables)
+                subscribable.Subscribe();
+        }
+
+        private void OnDisable()
+        {
+            foreach (var subscribable in _subscribables)
+                subscribable.Unsubscribe();
+        }
+
+        public void Update()
+        {
+            foreach (var updateable in _updateables)
+                updateable.Update();
         }
 
         public void Initialize(PlayerStats playerStats, Transform playerTransform)
         {
             _playerStats = playerStats;
             _playerTransform = playerTransform;
-        }
 
-        public void Update()
-        {
-            _foodsViewer?.Update();
+            FoodsViewerInit();
         }
 
         private void FoodsViewerInit()
         {
             List<IFood> foodList = _foodsObject.GetComponentsInChildren<IFood>().ToList();
 
-            _foodsViewer = new FoodsViewer(foodList, _playerStats, _playerTransform, _drawDistance);
+            FoodsViewer foodsViewer = new FoodsViewer(foodList, _playerStats, _playerTransform, _drawDistance);
+
+            _subscribables.Add(foodsViewer);
+            _updateables.Add(foodsViewer);
         }
     }
 }

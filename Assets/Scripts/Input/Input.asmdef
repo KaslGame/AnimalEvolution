@@ -2,7 +2,8 @@
     "name": "Input",
     "rootNamespace": "",
     "references": [
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "CommonInterfaces"
     ],
     "includePlatforms": [],
     "excludePlatforms": [
