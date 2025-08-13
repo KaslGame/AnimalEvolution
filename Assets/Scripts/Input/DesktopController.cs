@@ -5,14 +5,14 @@ namespace Input
 {
     public class DesktopController : IInputController, ISubscribable
     {
-        private PlayerInput _playerInput;
+        private PlayerInputSystem _playerInput;
 
-        public DesktopController(PlayerInput playerInput)
+        public DesktopController(PlayerInputSystem playerInput)
         {
             _playerInput = playerInput ?? throw new ArgumentNullException(nameof(playerInput));
         }
 
-        public event Action ButtonPerformed;
+        public event Action BoosterButtonPerformed;
 
         public Vector3 GetDirection()
         {
@@ -37,7 +37,7 @@ namespace Input
 
         private void OnBusterPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
-            ButtonPerformed?.Invoke();
+            BoosterButtonPerformed?.Invoke();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace UI.PlayerUI
             _booster.TriggerStatusChanged += OnTriggerStatusChanged;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _booster.TriggerStatusChanged -= OnTriggerStatusChanged;
         }

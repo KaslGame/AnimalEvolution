@@ -1,0 +1,18 @@
+{
+    "name": "GameBehaviors",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f6d4d0b1470d87d49a408e9a73b2076c",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:b87ac12e4bd7256488c161499c64b6eb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

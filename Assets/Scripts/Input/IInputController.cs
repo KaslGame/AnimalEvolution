@@ -5,7 +5,7 @@ namespace Input
 {
     public interface IInputController
     {
-        event Action ButtonPerformed;
+        event Action BoosterButtonPerformed;
         Vector3 GetDirection();
     }
 }

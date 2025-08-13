@@ -9,13 +9,13 @@ namespace Input
         private Joystick _joystick;
         private Button _button;
 
-        public MobileController(Joystick joystick, Button button)
+        public MobileController(Joystick joystick, Button boosterButton)
         {
             _joystick = joystick ?? throw new ArgumentNullException(nameof(joystick));
-            _button = button ?? throw new ArgumentNullException(nameof(button));
+            _button = boosterButton ?? throw new ArgumentNullException(nameof(boosterButton));
         }
 
-        public event Action ButtonPerformed;
+        public event Action BoosterButtonPerformed;
 
         public Vector3 GetDirection()
         {
@@ -34,7 +34,7 @@ namespace Input
 
         private void OnBoosterPerformed()
         {
-            ButtonPerformed?.Invoke();
+            BoosterButtonPerformed?.Invoke();
         }
     }
 }

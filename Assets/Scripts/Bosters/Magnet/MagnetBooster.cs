@@ -32,7 +32,7 @@ namespace BoostersScripts
         private void OnEnable()
         {
             _trigerZone.FoodEntered += OnFoodEntered;
-            _controller.ButtonPerformed += OnButtonPerformed;
+            _controller.BoosterButtonPerformed += OnButtonPerformed;
         }
 
         private void OnDisable()
