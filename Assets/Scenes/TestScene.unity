@@ -718,7 +718,7 @@ MonoBehaviour:
   _pauseButton: {fileID: 2044504835}
   _returnButton: {fileID: 812059140}
   _pauseMenu: {fileID: 39007377}
-  _booster: {fileID: 1384907471}
+  _boosterBoostrap: {fileID: 2069702904}
   IsMobile: 0
 --- !u!4 &620727695 stripped
 Transform:
@@ -1260,6 +1260,7 @@ Transform:
   - {fileID: 1199119040}
   - {fileID: 1207546145}
   - {fileID: 287039187}
+  - {fileID: 2069702903}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199119038
@@ -1298,6 +1299,7 @@ MonoBehaviour:
   _progressBar: {fileID: 1798267397825177090}
   _pickUper: {fileID: 8606696138337562730}
   _foodBootstrap: {fileID: 1207546146}
+  _boosterBootstrap: {fileID: 2069702904}
   _cameraPersuer: {fileID: 842597677}
   _scaleFactor: 0.1
 --- !u!4 &1199119040
@@ -2023,6 +2025,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044504833}
   m_CullTransparentMesh: 1
+--- !u!1 &2069702902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069702903}
+  - component: {fileID: 2069702904}
+  m_Layer: 0
+  m_Name: BoosterBootstrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069702903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069702902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1196231036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069702904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069702902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5fc5c8ca9eea942bb00fd2b874f601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magnet: {fileID: 1384907471}
 --- !u!4 &2088398970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8440981636295761466, guid: 42d87ef67e3421d48ad5870fcf684bd8, type: 3}

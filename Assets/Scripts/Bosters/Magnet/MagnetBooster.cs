@@ -14,19 +14,16 @@ namespace BoostersScripts
         [SerializeField] private PickUper _pickUper;
         [SerializeField] private float _delay;
 
-        private Vector3 _standartSize = new Vector3(5f, 2f, 5f);
         private List<IMovable> _movables = new List<IMovable>();
         private IInputController _controller;
         private WaitForSeconds _wait;
         private bool _isActive;
-        private int _currnetLevel;
 
         public event Action<bool> TriggerStatusChanged;
 
         private void Awake()
         {
             _wait = new WaitForSeconds(_delay);
-            ResizeZone(_currnetLevel);
         }
 
         private void OnEnable()
@@ -38,18 +35,19 @@ namespace BoostersScripts
         private void OnDisable()
         {
             _trigerZone.FoodEntered -= OnFoodEntered;
+            _controller.BoosterButtonPerformed -= OnButtonPerformed;
 
             if (_movables != null)
                 foreach (var movable in _movables)
                     movable.TargetReached -= OnTargetReached;
         }
 
-        public void SetLevel(int levelMagnet)
+        public void ZoneInitialize(int levelMagnet, IPlayerStats stats)
         {
-            if (levelMagnet < 0)
+            if (levelMagnet < 0 && stats == null)
                 return;
 
-            _currnetLevel = levelMagnet;
+            _trigerZone.Initialize(levelMagnet, stats);
         }
 
         public void SetInputController(IInputController inputController)
@@ -83,12 +81,6 @@ namespace BoostersScripts
         private void ResetBooster()
         {
             SetBoosterStatus(false);
-        }
-
-        private void ResizeZone(int level)
-        {
-            Vector3 newSize = new(_standartSize.x + level, _standartSize.y, _standartSize.z + level);
-            _trigerZone.SetSizeZone(newSize);
         }
 
         private void SetBoosterStatus(bool boosterStatus)

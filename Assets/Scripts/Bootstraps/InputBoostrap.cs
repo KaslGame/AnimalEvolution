@@ -18,7 +18,7 @@ public class InputBoostrap : MonoBehaviour
     [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _returnButton;
     [SerializeField] private PauseMenu _pauseMenu;
-    [SerializeField] private MagnetBooster _booster;
+    [SerializeField] private BoosterBoostrap _boosterBoostrap;
 
     public bool IsMobile;
 
@@ -66,6 +66,7 @@ public class InputBoostrap : MonoBehaviour
 
             _controller = mobileController;
             _subscribables.Add(mobileController);
+            TryHideButton();
         }
         else
         {
@@ -79,27 +80,23 @@ public class InputBoostrap : MonoBehaviour
             HideMobileUI();
         }
 
-        TryMagnet(_controller);
+        _boosterBoostrap.SetInputController(_controller);
         _movement.SetController(_controller);
-    }
-
-    private void TryMagnet(IInputController controller)
-    {
-        int level = YG2.saves.LevelMagnet;
-
-        if (level < MinLevel)
-        {
-            HideButton();
-            return;
-        }
-
-        _booster.SetInputController(_controller);
-        _booster.SetLevel(level);
     }
 
     private void HideMobileUI()
     {
         _joystick.gameObject.SetActive(false);
+        HideButton();
+    }
+
+    private void TryHideButton()
+    {
+        int level = 1; // YG2.saves.LevelMagnet
+
+        if (level >= MinLevel)
+            return;
+
         HideButton();
     }
 

@@ -14,6 +14,7 @@ namespace Bootstraps
         [SerializeField] private ProgressBar _progressBar;
         [SerializeField] private PickUper _pickUper;
         [SerializeField] private FoodBootstrap _foodBootstrap;
+        [SerializeField] private BoosterBoostrap _boosterBootstrap;
         [SerializeField] private CameraPursuer _cameraPersuer;
 
         [SerializeField] private float _scaleFactor = 0.1f;
@@ -26,6 +27,7 @@ namespace Bootstraps
 
             _cameraPersuer.Initialize(_player.transform, _playerStats);
             _foodBootstrap.Initialize(_playerStats, _player.transform);
+            _boosterBootstrap.SetPlayerStats(_playerStats);
         }
 
         private void CharacterInitialize()
