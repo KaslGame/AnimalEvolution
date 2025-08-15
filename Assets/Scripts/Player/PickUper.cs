@@ -3,23 +3,22 @@ using UnityEngine;
 
 namespace PlayerScripts
 {
-    public class PickUper : MonoBehaviour, IPickUper
+    public class PickUper : MonoBehaviour, ICollector, IPickUper
     {
-        private PlayerStats _playerStats;
+        private IScoreChanger _scoreChanger;
 
-        public int Level => _playerStats.Level;
+        public int Level => _scoreChanger.Level;
 
-        public void Init(PlayerStats playerStats)
+        public Transform Transform => transform;
+
+        public void Initialize(IScoreChanger scoreChanger)
         {
-            if (playerStats == null)
-                throw new ArgumentNullException(nameof(playerStats));
-
-            _playerStats = playerStats;
+            _scoreChanger = scoreChanger ?? throw new ArgumentNullException(nameof(scoreChanger));
         }
 
         public void PickUp(float score)
         {
-            _playerStats.AddScore(score);
+            _scoreChanger.AddScore(score);
         }
     }
 }

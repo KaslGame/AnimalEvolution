@@ -14,7 +14,6 @@ namespace FoodScripts
         private Outline _outline;
         private bool _isEaten;
 
-
         public int MinLevel => _minLevel;
         public bool IsEaten => _isEaten;
 
@@ -27,7 +26,7 @@ namespace FoodScripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IPickUper pickUper))
+            if (other.TryGetComponent(out ICollector pickUper))
                 if (pickUper.Level >= _minLevel)
                     Collect(pickUper);
         }
@@ -52,7 +51,7 @@ namespace FoodScripts
             return gameObject.transform.position;
         }
 
-        public void Collect(IPickUper pickUper)
+        public void Collect(ICollector pickUper)
         {
             pickUper.PickUp(_score);
             gameObject.SetActive(false);

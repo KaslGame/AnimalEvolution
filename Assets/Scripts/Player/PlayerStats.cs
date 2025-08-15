@@ -2,9 +2,9 @@ using System;
 
 namespace PlayerScripts
 {
-    public class PlayerStats : IPlayerStats
+    public class PlayerStats : IPlayerStats, IScoreChanger
     {
-        private int _costLevelScore = 50;
+        private const int CostLevelScore = 50;
 
         private int _level = 1;
         private float _currentScore;
@@ -13,8 +13,7 @@ namespace PlayerScripts
         public event Action<int> LevelChanged;
 
         public int Level => _level;
-        private float _needScore => _level * _costLevelScore;
-
+        private float NeedScore => _level * CostLevelScore;
 
         public void AddScore(float score)
         {
@@ -25,12 +24,12 @@ namespace PlayerScripts
 
             TryUpdateLevel();
 
-            ScoreChanged?.Invoke(_currentScore, _needScore);
+            ScoreChanged?.Invoke(_currentScore, NeedScore);
         }
 
         private void TryUpdateLevel()
         {
-            if (_currentScore >= _needScore)
+            if (_currentScore >= NeedScore)
             {
                 _currentScore = 0;
                 _level++;

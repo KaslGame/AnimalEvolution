@@ -1,8 +1,11 @@
+using UnityEngine;
+
 namespace PlayerScripts
 {
     public interface IPickUper
     {
-        void PickUp(float score);
-        int Level { get; }
+        Transform Transform { get; }
+        void Initialize(IScoreChanger scoreChanger);
     }
+
 }

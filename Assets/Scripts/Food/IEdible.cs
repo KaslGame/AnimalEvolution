@@ -4,6 +4,6 @@ namespace FoodScripts
 {
     public interface IEdible
     {
-        void Collect(IPickUper pickUper);
+        void Collect(ICollector pickUper);
     }
 }

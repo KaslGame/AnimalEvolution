@@ -1,3 +1,4 @@
+using CharacterSystem;
 using FoodScripts;
 using Input;
 using PlayerScripts;
@@ -11,31 +12,40 @@ namespace BoostersScripts
     public class MagnetBooster : MonoBehaviour
     {
         [SerializeField] private TrigerZone _trigerZone;
-        [SerializeField] private PickUper _pickUper;
         [SerializeField] private float _delay;
+        [SerializeField] private PickUper _startPickUper;
 
-        private List<IMovable> _movables = new List<IMovable>();
+        private List<IMovable> _movables = new();
         private IInputController _controller;
         private WaitForSeconds _wait;
         private bool _isActive;
+
+        private IContextChanger _contextChanger;
+        private ICollector _collector;
+        private IPickUper _pickUper;
 
         public event Action<bool> TriggerStatusChanged;
 
         private void Awake()
         {
             _wait = new WaitForSeconds(_delay);
+
+            if (_pickUper == null)
+                _pickUper = _startPickUper;
         }
 
         private void OnEnable()
         {
             _trigerZone.FoodEntered += OnFoodEntered;
             _controller.BoosterButtonPerformed += OnButtonPerformed;
+            _contextChanger.ContextChanged += OnContextChanged;
         }
 
         private void OnDisable()
         {
             _trigerZone.FoodEntered -= OnFoodEntered;
             _controller.BoosterButtonPerformed -= OnButtonPerformed;
+            _contextChanger.ContextChanged -= OnContextChanged;
 
             if (_movables != null)
                 foreach (var movable in _movables)
@@ -53,6 +63,11 @@ namespace BoostersScripts
         public void SetInputController(IInputController inputController)
         {
             _controller = inputController ?? throw new ArgumentNullException(nameof(inputController));
+        }
+
+        public void SetChanger(IContextChanger contextChanger)
+        {
+            _contextChanger = contextChanger ?? throw new ArgumentNullException(nameof(contextChanger));
         }
 
         private void OnButtonPerformed()
@@ -95,17 +110,23 @@ namespace BoostersScripts
             callback?.Invoke();
         }
 
+        private void OnContextChanged(CharacterContext context)
+        {
+            _pickUper = context?.PickUper;
+            _collector = context?.Collector;
+        }
+
         private void OnFoodEntered(IMovable food)
         {
             food.TargetReached += OnTargetReached;
-            food.SetTarget(_pickUper.transform);
+            food.SetTarget(_pickUper.Transform);
 
             _movables.Add(food);
         }
 
         private void OnTargetReached(IEdible edible)
         {
-            edible.Collect(_pickUper);
+            edible.Collect(_collector);
         }
     }
 }

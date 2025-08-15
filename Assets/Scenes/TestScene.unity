@@ -628,6 +628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 205279583}
+  - component: {fileID: 205279584}
   m_Layer: 0
   m_Name: ProgressBarCharacter
   m_TagString: Untagged
@@ -657,6 +658,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000025395, y: -125}
   m_SizeDelta: {x: 575.34, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &205279584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205279582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfde914b6d830844830876866c839c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FiledImage: {fileID: 1309676939}
+  _currentCharacter: {fileID: 787607976}
+  _nextCharacter: {fileID: 1704746690}
 --- !u!1 &228932032
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +777,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &255528425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255528426}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255528426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255528425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1782502065}
+  m_Father: {fileID: 5623850931090809281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &272391237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -941,7 +989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0320c887089f48f48a2ea396201c5840, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1526,15 +1574,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1061a925f77a24984af9424d7b5bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 5623850931090809281}
   _playerModel: {fileID: 1782502064}
-  _characters:
-  - {fileID: 11400000, guid: f5e633a1c08c54341bafb6b45738a680, type: 2}
-  - {fileID: 11400000, guid: 01d41b93cdbde8b49be4cfe63c694a9e, type: 2}
-  _progressBar: {fileID: 1798267397825177090}
+  _standartBar: {fileID: 8821813564016038144}
+  _characterBar: {fileID: 205279584}
   _pickUper: {fileID: 1782502069}
   _foodBootstrap: {fileID: 1207546146}
   _boosterBootstrap: {fileID: 2069702904}
   _cameraPersuer: {fileID: 842597677}
+  _config: {fileID: 11400000, guid: 6074f09363e46d340b2561b25b0e288d, type: 2}
+  _applier: {fileID: 6476828885207494092}
   _scaleFactor: 0.1
 --- !u!4 &1199119040
 Transform:
@@ -1723,7 +1772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trigerZone: {fileID: 876156130}
-  _pickUper: {fileID: 1782502069}
   _delay: 5
 --- !u!1 &1627876618
 GameObject:
@@ -2018,7 +2066,7 @@ GameObject:
   - component: {fileID: 1782502068}
   - component: {fileID: 1782502069}
   m_Layer: 0
-  m_Name: Model
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,12 +2080,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782502064}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5623850931090809281}
+  m_Father: {fileID: 255528426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1782502066
 MeshRenderer:
@@ -2594,6 +2642,7 @@ GameObject:
   - component: {fileID: 6476828885207494091}
   - component: {fileID: 6121485846338162282}
   - component: {fileID: 4061213088948916700}
+  - component: {fileID: 6476828885207494092}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2682,21 +2731,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0001001358, y: -95.70004}
   m_SizeDelta: {x: 526, y: 71.1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1798267397825177090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8821813564016038143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be377011c910424987727c3486eefc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _level: {fileID: 4407912686204834267}
-  _filedImage: {fileID: 4512851056470954569}
-  _score: {fileID: 5098133191093879316}
 --- !u!222 &2142805499134445963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3104,7 +3138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1782502065}
+  - {fileID: 255528426}
   - {fileID: 6679455726872070564}
   - {fileID: 1384907470}
   m_Father: {fileID: 0}
@@ -3194,6 +3228,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6476828885207494092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102346166695344914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa14864cc30a694ba279886a5149c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 255528426}
+  _currentModel: {fileID: 1782502064}
 --- !u!1001 &6616138450138476940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3507,7 +3555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2833017148902043563}
-  - component: {fileID: 1798267397825177090}
+  - component: {fileID: 8821813564016038144}
   m_Layer: 0
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -3515,6 +3563,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8821813564016038144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821813564016038143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e0dc9dbc83b14498212a3f5784e14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FiledImage: {fileID: 4512851056470954569}
+  _level: {fileID: 4407912686204834267}
+  _score: {fileID: 5098133191093879316}
 --- !u!114 &8934561401185772947
 MonoBehaviour:
   m_ObjectHideFlags: 0

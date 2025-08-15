@@ -10,7 +10,7 @@ namespace FoodScripts
         private const float ErrorRate = 0.0001f;
 
         private readonly List<IFood> _foods;
-        private readonly List<IFood> _foodsForClear = new List<IFood>();
+        private readonly List<IFood> _foodsForClear = new();
         private readonly Transform _playerTransform;
         private readonly IPlayerStats _stats;
         private readonly float _drawDistanceSqr;
@@ -30,7 +30,7 @@ namespace FoodScripts
             _updateEveryNFrames = Mathf.Max(1, updateEveryNFrames);
         }
 
-        private Vector3 _currentPosition => _playerTransform.position;
+        private Vector3 CurrentPosition => _playerTransform.position;
 
         public void Subscribe()
         {
@@ -47,7 +47,7 @@ namespace FoodScripts
             if (++_frameCounter % _updateEveryNFrames != 0)
                 return;
 
-            if ((_currentPosition - _lastPosition).sqrMagnitude < ErrorRate)
+            if ((CurrentPosition - _lastPosition).sqrMagnitude < ErrorRate)
                 return;
 
             foreach (IFood food in _foods)
@@ -60,7 +60,7 @@ namespace FoodScripts
                 }
 
                 Vector3 foodPosisition = food.GetPosition();
-                float distanceSqr = (foodPosisition - _currentPosition).sqrMagnitude;
+                float distanceSqr = (foodPosisition - CurrentPosition).sqrMagnitude;
 
                 if (distanceSqr <= _drawDistanceSqr)
                 {
