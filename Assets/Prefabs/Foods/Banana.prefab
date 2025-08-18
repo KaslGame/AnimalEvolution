@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minLevel: 0
-  _score: 50
+  _score: 25
   _solidCollider: {fileID: 3698379297085622330}
   _trigger: {fileID: 6750955553225621802}
 --- !u!114 &-8835408822099341022

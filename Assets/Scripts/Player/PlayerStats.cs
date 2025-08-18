@@ -6,13 +6,15 @@ namespace PlayerScripts
     {
         private const int CostLevelScore = 50;
 
-        private int _level = 1;
+        private int _level = 0;
         private float _currentScore;
 
         public event Action<float, float> ScoreChanged;
         public event Action<int> LevelChanged;
 
         public int Level => _level;
+        public float BasePointsPerLevel => CostLevelScore;
+        public float TotalScore { get; private set; }
         private float NeedScore => _level * CostLevelScore;
 
         public void AddScore(float score)
@@ -21,6 +23,7 @@ namespace PlayerScripts
                 throw new ArgumentOutOfRangeException("Score < 0");
 
             _currentScore += score;
+            TotalScore += score;
 
             TryUpdateLevel();
 
@@ -31,7 +34,7 @@ namespace PlayerScripts
         {
             if (_currentScore >= NeedScore)
             {
-                _currentScore = 0;
+                _currentScore -= NeedScore;
                 _level++;
 
                 LevelChanged?.Invoke(_level);

@@ -13,7 +13,6 @@ namespace BoostersScripts
     {
         [SerializeField] private TrigerZone _trigerZone;
         [SerializeField] private float _delay;
-        [SerializeField] private PickUper _startPickUper;
 
         private List<IMovable> _movables = new();
         private IInputController _controller;
@@ -29,9 +28,6 @@ namespace BoostersScripts
         private void Awake()
         {
             _wait = new WaitForSeconds(_delay);
-
-            if (_pickUper == null)
-                _pickUper = _startPickUper;
         }
 
         private void OnEnable()

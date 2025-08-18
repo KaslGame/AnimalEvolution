@@ -16,7 +16,6 @@ namespace Bootstraps
         [SerializeField] private StandartBar _standartBar;
         [SerializeField] private CharacterBar _characterBar;
 
-        [SerializeField] private PickUper _pickUper;
         [SerializeField] private FoodBootstrap _foodBootstrap;
         [SerializeField] private BoosterBoostrap _boosterBootstrap;
         [SerializeField] private CameraPursuer _cameraPersuer;
@@ -37,11 +36,17 @@ namespace Bootstraps
 
             _standartBar.Initialize(_playerStats);
             _characterBar.Initialize(_playerStats);
-            _characterBar.SetChanger(_changer);
-            _pickUper.Initialize(_playerStats);
+            _characterBar.Initialize(_changer);
             _cameraPersuer.Initialize(_player, _playerStats);
             _foodBootstrap.Initialize(_playerStats, _player);
             _boosterBootstrap.Initialize(_playerStats, _changer);
+        }
+
+        private void Start()
+        {
+            int costFirstLevel = 0;
+
+            _playerStats.AddScore(costFirstLevel);
         }
 
         private void OnEnable()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e707e977544044280ba325630eeb95, type: 3}
   m_Name: TestConfig
   m_EditorClassIdentifier: 
-  _charaters:
+  Charaters:
+  - {fileID: 11400000, guid: 20821e4baf97c264989b610d4019904c, type: 2}
   - {fileID: 11400000, guid: 5084f5a6a6e43fa4e9731c47a1928c18, type: 2}
   - {fileID: 11400000, guid: 5600c326e4316a64e8481582ac63852a, type: 2}

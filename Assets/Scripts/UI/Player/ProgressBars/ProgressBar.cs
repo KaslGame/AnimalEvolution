@@ -7,23 +7,23 @@ namespace UI.PlayerUI
     {
         [SerializeField] protected Image FiledImage;
 
-        private IPlayerStats _playerStats;
+        protected IPlayerStats Stats;
 
         public void Initialize(IPlayerStats stats)
         {
-            _playerStats = stats;
+            Stats = stats;
         }
 
         public virtual void Start()
         {
-            _playerStats.LevelChanged += OnLevelChanged;
-            _playerStats.ScoreChanged += OnScoreChanged;
+            Stats.LevelChanged += OnLevelChanged;
+            Stats.ScoreChanged += OnScoreChanged;
         }
 
         public virtual void OnDisable()
         {
-            _playerStats.LevelChanged -= OnLevelChanged;
-            _playerStats.ScoreChanged -= OnScoreChanged;
+            Stats.LevelChanged -= OnLevelChanged;
+            Stats.ScoreChanged -= OnScoreChanged;
         }
 
         protected abstract void OnLevelChanged(int level);

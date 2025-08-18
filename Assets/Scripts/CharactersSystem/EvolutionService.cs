@@ -1,6 +1,7 @@
 using CommonInterfaces;
 using PlayerScripts;
 using System;
+using UnityEngine;
 
 namespace CharacterSystem
 {
@@ -9,6 +10,8 @@ namespace CharacterSystem
         private readonly EvolutionConfig _config;
         private readonly IFormApplier _applier;
         private readonly PlayerStats _stats;
+
+        private CharacterData _currentData;
 
         public EvolutionService(EvolutionConfig config, IFormApplier applier, PlayerStats stats)
         {
@@ -35,9 +38,10 @@ namespace CharacterSystem
             CharacterData currentCharacter = _config.GetCharacterByLevel(level);
             CharacterData nextCharacter = _config.GetNextCharacter(level);
 
-            if (currentCharacter == null)
+            if (currentCharacter == null || _currentData == currentCharacter)
                 return;
 
+            _currentData = currentCharacter;
             CharacterContext context = _applier.ApplyForm(currentCharacter);
             context?.PickUper?.Initialize(_stats);
             
