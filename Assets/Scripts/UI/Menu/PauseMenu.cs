@@ -2,24 +2,29 @@ using UnityEngine;
 
 namespace UI.Menu
 {
-    [RequireComponent(typeof(FadeAnimation))]
+    [RequireComponent(typeof(CanvasGroup))]
     public class PauseMenu : MonoBehaviour, IMenu
     {
-        private FadeAnimation _animation;
+        [SerializeField] private float _fadeDurarion;
+
+        private CanvasGroup _group;
+        private FadeAnimation _fade;
 
         private void Awake()
         {
-            _animation = GetComponent<FadeAnimation>();
+            _group = GetComponent<CanvasGroup>();
+
+            _fade = new FadeAnimation(_group, _fadeDurarion);
         }
 
         public void Enable()
         {
-            _animation.FadeIn();
+            _fade.FadeIn();
         }
 
         public void Disable()
         {
-            _animation.FadeOut();
+            _fade.FadeOut();
         }
     }
 }

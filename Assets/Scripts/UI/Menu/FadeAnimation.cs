@@ -1,20 +1,26 @@
 using UnityEngine;
+using System;
 using DG.Tweening;
 
 namespace UI.Menu
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class FadeAnimation : MonoBehaviour
+    public class FadeAnimation
     {
         private const float UnVisible = 0f;
         private const float Visible = 1f;
 
-        [SerializeField] private float _duration = 1f;
+        private float _duration = 1f;
         private CanvasGroup _group;
 
-        private void Awake()
+        public FadeAnimation(CanvasGroup group, float duration)
         {
-            _group = GetComponent<CanvasGroup>();
+            if (duration <= 0f)
+                throw new ArgumentOutOfRangeException(nameof(duration));
+
+            _group = group ?? throw new ArgumentNullException(nameof(group));
+            _duration = duration;
+
             _group.blocksRaycasts = false;
         }
 
