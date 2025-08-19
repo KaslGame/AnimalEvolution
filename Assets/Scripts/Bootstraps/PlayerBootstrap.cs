@@ -5,6 +5,7 @@ using PlayerScripts;
 using System.Collections.Generic;
 using UI.PlayerUI;
 using UnityEngine;
+using ItemScripts;
 
 namespace Bootstraps
 {
@@ -25,14 +26,19 @@ namespace Bootstraps
 
         [SerializeField] private float _scaleFactor = 0.1f;
 
+        [SerializeField] private int _rewardPerLevel;
+        [SerializeField] private CoinView _coinView;
+
         private PlayerStats _playerStats;
         private EvolutionService _changer;
+        private CoinStorage _storage;
 
         private List<ISubscribable> _subscribables = new();
 
         private void Awake()
         {
             PlayerInitialize();
+            CoinsInitialize();
 
             _standartBar.Initialize(_playerStats);
             _characterBar.Initialize(_playerStats);
@@ -44,9 +50,9 @@ namespace Bootstraps
 
         private void Start()
         {
-            int costFirstLevel = 0;
+            int firstLevel = 0;
 
-            _playerStats.AddScore(costFirstLevel);
+            _playerStats.AddScore(firstLevel);
         }
 
         private void OnEnable()
@@ -68,6 +74,17 @@ namespace Bootstraps
             _changer = new EvolutionService(_config, _applier, _playerStats);
 
             _subscribables.Add(_changer);
+        }
+
+        private void CoinsInitialize()
+        {
+            CoinStorage storage = new CoinStorage();
+            LevelRewarder rewarder = new LevelRewarder(_playerStats, storage, _rewardPerLevel);
+
+            _coinView.Initialize(storage);
+            _subscribables.Add(rewarder);
+
+            _storage = storage;
         }
     }
 }

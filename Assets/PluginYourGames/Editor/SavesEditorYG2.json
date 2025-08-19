@@ -1,0 +1,13 @@
+{
+    "Coins": 70,
+    "LevelMagnet": 5,
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 4
+}

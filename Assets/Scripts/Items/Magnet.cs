@@ -1,19 +1,22 @@
 using System;
 using YG;
 
-public class Magnet
+namespace ItemScripts
 {
-    public event Action<int> OnLevelChanged;
-
-    public int Level => YG2.saves.LevelMagnet;
-
-    public void IncreaseLevel(int level)
+    public class Magnet
     {
-        if (level < 0)
-            return;
+        public event Action<int> LevelChanged;
 
-        YG2.saves.LevelMagnet += level;
+        public int Level => YG2.saves.LevelMagnet;
 
-        OnLevelChanged?.Invoke(level);
+        public void IncreaseLevel(int level)
+        {
+            if (level < 0)
+                return;
+
+            YG2.saves.LevelMagnet += level;
+
+            LevelChanged?.Invoke(level);
+        }
     }
 }
