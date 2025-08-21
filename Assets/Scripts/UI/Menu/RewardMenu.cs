@@ -3,12 +3,17 @@ using ItemScripts;
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEngine.UI;
+using YG;
 
 namespace UI.Menu 
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class RewardMenu : MonoBehaviour
     {
+        private const string RewardID = "Coins";
+
+        [SerializeField] private Button _rewardButton;
         [SerializeField] private TMP_Text _reward;
         [SerializeField] private float _fadeDuration;
 
@@ -34,6 +39,11 @@ namespace UI.Menu
             _animation = new FadeAnimation(_group, _fadeDuration);
         }
 
+        private void OnEnable()
+        {
+            _rewardButton.onClick.AddListener(ShowReward);
+        }
+
         private void Start()
         {
             _viewer.FoodsEmpty += OnFoodsEmpty;
@@ -42,12 +52,25 @@ namespace UI.Menu
         private void OnDisable()
         {
             _viewer.FoodsEmpty -= OnFoodsEmpty;
+            _rewardButton.onClick.RemoveListener(ShowReward);
         }
 
         private void OnFoodsEmpty()
         {
             _animation.FadeIn();
             _reward.text = _rewarder.TotalReward.ToString();
+        }
+
+        private void ShowReward()
+        {
+            int doubleReward = 2;
+
+            if (YG2.nowAdsShow == true)
+                return;
+
+            YG2.RewardedAdvShow(RewardID);
+            _rewardButton.interactable = false;
+            _reward.text = $"{_rewarder.TotalReward * doubleReward}";
         }
     }
 }

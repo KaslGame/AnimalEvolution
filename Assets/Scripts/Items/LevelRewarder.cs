@@ -1,10 +1,12 @@
 using CommonInterfaces;
 using System;
+using YG;
 
 namespace ItemScripts
 {
     public class LevelRewarder : ISubscribable, ILevelRewarder
     {
+        private const string RewardID = "Coins";
         private const int FirstLevel = 1;
 
         private readonly IPlayerStats _stats;
@@ -26,11 +28,13 @@ namespace ItemScripts
         public void Subscribe()
         {
             _stats.LevelChanged += OnLevelChanged;
+            YG2.onRewardAdv += OnReward;
         }
 
         public void Unsubscribe()
         {
             _stats.LevelChanged -= OnLevelChanged;
+            YG2.onRewardAdv -= OnReward;
         }
 
         private void OnLevelChanged(int level)
@@ -40,8 +44,24 @@ namespace ItemScripts
             if (level <= FirstLevel)
                 return;
 
-            TotalReward += reward;
-            _increaser.Increase(reward);
+            IncreaseCoint(reward);
+        }
+
+        private void OnReward(string id)
+        {
+            if (id == RewardID)
+                return;
+
+            IncreaseCoint(TotalReward);
+        }
+
+        private void IncreaseCoint(int amount)
+        {
+            if (amount < 0)
+                return;
+
+            TotalReward += amount;
+            _increaser.Increase(amount);
         }
     }
 }

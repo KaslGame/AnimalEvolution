@@ -1,5 +1,5 @@
 {
-    "Coins": 655,
+    "Coins": 70,
     "LevelMagnet": 5,
     "intExample": 5,
     "strExample": "Hello!",
@@ -9,5 +9,5 @@
         false,
         false
     ],
-    "idSave": 38
+    "idSave": 4
 }
