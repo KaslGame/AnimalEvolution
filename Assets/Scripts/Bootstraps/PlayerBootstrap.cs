@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UI.PlayerUI;
 using UnityEngine;
 using ItemScripts;
+using UI.Menu;
 
 namespace Bootstraps
 {
@@ -29,9 +30,10 @@ namespace Bootstraps
         [SerializeField] private int _rewardPerLevel;
         [SerializeField] private CoinView _coinView;
 
+        [SerializeField] private RewardMenu _rewardMenu;
+
         private PlayerStats _playerStats;
         private EvolutionService _changer;
-        private CoinStorage _storage;
 
         private List<ISubscribable> _subscribables = new();
 
@@ -83,8 +85,7 @@ namespace Bootstraps
 
             _coinView.Initialize(storage);
             _subscribables.Add(rewarder);
-
-            _storage = storage;
+            _rewardMenu.SetRewarder(rewarder);
         }
     }
 }

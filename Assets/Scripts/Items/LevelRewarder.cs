@@ -1,17 +1,17 @@
 using CommonInterfaces;
 using System;
-using UnityEngine;
 
 namespace ItemScripts
 {
-    public class LevelRewarder : ISubscribable
+    public class LevelRewarder : ISubscribable, ILevelRewarder
     {
         private const int FirstLevel = 1;
 
         private readonly IPlayerStats _stats;
         private readonly ICoinIncreaser _increaser;
+        private readonly int _rewardPerLevel;
 
-        private int _rewardPerLevel;
+        public int TotalReward { get; private set; }
 
         public LevelRewarder(IPlayerStats stats, ICoinIncreaser increaser, int rewardPerLevel)
         {
@@ -40,6 +40,7 @@ namespace ItemScripts
             if (level <= FirstLevel)
                 return;
 
+            TotalReward += reward;
             _increaser.Increase(reward);
         }
     }

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using PlayerScripts;
 using CommonInterfaces;
+using UI.Menu;
 
 namespace Bootstraps
 {
     public class FoodBootstrap : MonoBehaviour
     {
+        [SerializeField] private RewardMenu _rewardMenu;
         [SerializeField] private GameObject _foodsObject;
         [SerializeField] private float _drawDistance;
 
@@ -52,6 +54,7 @@ namespace Bootstraps
 
             _subscribables.Add(foodsViewer);
             _updateables.Add(foodsViewer);
+            _rewardMenu.SetViewer(foodsViewer);
         }
     }
 }

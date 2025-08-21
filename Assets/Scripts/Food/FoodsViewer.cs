@@ -5,7 +5,7 @@ using System;
 
 namespace FoodScripts
 {
-    public class FoodsViewer : IUpdateable, ISubscribable
+    public class FoodsViewer : IUpdateable, ISubscribable, IFoodsViewer
     {
         private const float ErrorRate = 0.0001f;
 
@@ -31,6 +31,8 @@ namespace FoodScripts
         }
 
         private Vector3 CurrentPosition => _playerTransform.position;
+
+        public event Action FoodsEmpty;
 
         public void Subscribe()
         {
@@ -90,6 +92,9 @@ namespace FoodScripts
 
             foreach (IFood food in _foodsForClear)
                 _foods.Remove(food);
+
+            if (_foods.Count == 0)
+                FoodsEmpty?.Invoke();
 
             _foodsForClear.Clear();
         }
