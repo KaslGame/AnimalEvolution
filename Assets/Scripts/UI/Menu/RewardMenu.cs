@@ -59,6 +59,8 @@ namespace UI.Menu
         {
             _animation.FadeIn();
             _reward.text = _rewarder.TotalReward.ToString();
+
+            Time.timeScale = 0f;
         }
 
         private void ShowReward()

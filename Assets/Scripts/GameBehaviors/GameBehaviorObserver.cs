@@ -6,9 +6,9 @@ namespace GameBehaviors
 {
     public class GameBehaviorObserver : ISubscribable
     {
-        private GameBehaviorChanger _changer;
-        private Button _pauseButton;
-        private Button _returnButton;
+        private readonly GameBehaviorChanger _changer;
+        private readonly Button _pauseButton;
+        private readonly Button _returnButton;
 
         public GameBehaviorObserver(GameBehaviorChanger changer, Button pauseButton, Button returnButton)
         {

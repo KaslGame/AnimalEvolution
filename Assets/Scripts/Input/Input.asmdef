@@ -6,9 +6,7 @@
         "CommonInterfaces"
     ],
     "includePlatforms": [],
-    "excludePlatforms": [
-        "WebGL"
-    ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
