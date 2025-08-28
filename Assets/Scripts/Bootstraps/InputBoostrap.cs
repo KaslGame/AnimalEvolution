@@ -1,3 +1,4 @@
+using BananaParty.WebUtility;
 using CommonInterfaces;
 using GameBehaviors;
 using Input;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using UI.Menu;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class InputBoostrap : MonoBehaviour
 {
@@ -18,8 +20,6 @@ public class InputBoostrap : MonoBehaviour
     [SerializeField] private Button _returnButton;
     [SerializeField] private PauseMenu _pauseMenu;
     [SerializeField] private BoosterBoostrap _boosterBoostrap;
-
-    public bool IsMobile;
 
     private IInputController _controller;
     private IDevice _device;
@@ -58,7 +58,7 @@ public class InputBoostrap : MonoBehaviour
 
     private void InputInitialize()
     {
-        if (IsMobile)
+        if (YG2.envir.isMobile)
         {
             var mobileController = new MobileController(_joystick, _busterButton);
             _device = new MobileDevice(_joystick, _busterButton);

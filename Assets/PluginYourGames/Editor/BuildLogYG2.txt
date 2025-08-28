@@ -1,0 +1,3 @@
+Build path: D:/MyGames/Builds
+Build number: 3
+PluginYG version: 2.005

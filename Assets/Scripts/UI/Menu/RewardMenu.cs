@@ -42,6 +42,7 @@ namespace UI.Menu
         private void OnEnable()
         {
             _rewardButton.onClick.AddListener(ShowReward);
+            YG2.onRewardAdv += OnReward;
         }
 
         private void Start()
@@ -53,6 +54,7 @@ namespace UI.Menu
         {
             _viewer.FoodsEmpty -= OnFoodsEmpty;
             _rewardButton.onClick.RemoveListener(ShowReward);
+            YG2.onRewardAdv -= OnReward;
         }
 
         private void OnFoodsEmpty()
@@ -63,16 +65,23 @@ namespace UI.Menu
             Time.timeScale = 0f;
         }
 
-        private void ShowReward()
+        private void OnReward(string id)
         {
             int doubleReward = 2;
 
+            if (id != RewardID)
+                return;
+
+            _rewardButton.interactable = false;
+            _reward.text = $"{_rewarder.TotalReward * doubleReward}";
+        }
+
+        private void ShowReward()
+        {
             if (YG2.nowAdsShow == true)
                 return;
 
             YG2.RewardedAdvShow(RewardID);
-            _rewardButton.interactable = false;
-            _reward.text = $"{_rewarder.TotalReward * doubleReward}";
         }
     }
 }
