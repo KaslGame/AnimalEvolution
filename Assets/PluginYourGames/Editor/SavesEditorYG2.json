@@ -1,6 +1,8 @@
 {
-    "Coins": 840,
+    "Coins": 1330,
     "LevelMagnet": 5,
+    "LevelMap": 0,
+    "PaidMaps": [],
     "intExample": 5,
     "strExample": "Hello!",
     "boolExample": [
@@ -9,5 +11,5 @@
         false,
         false
     ],
-    "idSave": 48
+    "idSave": 76
 }
