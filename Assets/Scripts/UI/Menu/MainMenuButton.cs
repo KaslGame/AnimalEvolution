@@ -28,6 +28,7 @@ namespace UI.Menu
         private void ShowMain()
         {
             SceneManager.LoadScene(Main);
+            Time.timeScale = 1f;
         }
     }
 }

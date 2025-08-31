@@ -19,7 +19,7 @@ public class ChoicerMap : MonoBehaviour
     private List<MapConfig> _allMaps = new List<MapConfig>();
     private MapConfig _currentMap;
     private int _currentMapIndex;
-    [SerializeField] private bool _canStart;
+    private bool _canStart;
 
     private void OnEnable()
     {
@@ -67,7 +67,6 @@ public class ChoicerMap : MonoBehaviour
             return;
 
         SceneManager.LoadScene(_currentMap.MapName.ToString());
-        Time.timeScale = 1f;
     }
 
     private void UpdateMapView()
@@ -76,17 +75,18 @@ public class ChoicerMap : MonoBehaviour
 
         if (_currentMap.PaidMap == true)
         {
-            if (_mapStorage.IsMapPurchased(_currentMap.MapName.ToString()))
+            if (_mapStorage.IsMapPurchased(_currentMap.MapName))
                 _canStart = true;
             else
                 _canStart = false;
         }
-        
-        if (_mapStorage.GetLevelMap() >= _currentMap.Level)
-            _canStart = true;
         else
-            _canStart = false;
-
+        {
+            if (_mapStorage.GetLevelMap() >= _currentMap.Level)
+                _canStart = true;
+            else
+                _canStart = false;
+        }
 
         if (_canStart == true)
             _lock.gameObject.SetActive(false);

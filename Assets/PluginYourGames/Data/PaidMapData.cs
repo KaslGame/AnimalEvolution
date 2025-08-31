@@ -1,3 +1,4 @@
+using Map;
 using System;
 
 namespace YG
@@ -5,10 +6,10 @@ namespace YG
     [Serializable]
     public class PaidMapData
     {
-        public string Name;
+        public NameScene Name;
         public bool IsPurchased;
 
-        public PaidMapData(string name, bool isPurchased)
+        public PaidMapData(NameScene name, bool isPurchased)
         {
             Name = name;
             IsPurchased = isPurchased;

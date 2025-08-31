@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32967ad195989614e8e94cbefa935811, type: 3}
-  m_Name: MainMap
+  m_Script: {fileID: 11500000, guid: 39b4494785954774096a65ee841efa7e, type: 3}
+  m_Name: SpeedSO
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: e1ef43c832892254cb0212bc301b6118, type: 3}
-  MapName: 2
-  Level: 0
-  PaidMap: 1
+  Icon: {fileID: 21300000, guid: e36908d2c9abf6042affdd1946156622, type: 3}
+  Price: 19000000280000003c0000004600000064000000

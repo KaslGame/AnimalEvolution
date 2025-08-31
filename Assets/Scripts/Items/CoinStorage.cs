@@ -3,7 +3,7 @@ using YG;
 
 namespace ItemScripts
 {
-    public class CoinStorage : ICoinStorage, ICoinIncreaser
+    public class CoinStorage : ICoinStorage, ICoinIncreaser, ICoinReducer
     {
         public event Action<int> CoinsChanged;
 
@@ -15,6 +15,17 @@ namespace ItemScripts
                 return;
 
             YG2.saves.Coins += value;
+            YG2.SaveProgress();
+
+            CoinsChanged?.Invoke(CoinCount);
+        }
+
+        public void Reduce(int value)
+        {
+            if (value < 0)
+                return;
+
+            YG2.saves.Coins -= value;
             YG2.SaveProgress();
 
             CoinsChanged?.Invoke(CoinCount);

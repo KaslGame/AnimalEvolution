@@ -5,6 +5,6 @@ namespace YG
     public partial class SavesYG
     {
         public int LevelMap;
-        public List<PaidMapData> PaidMaps;
+        public List<PaidMapData> PaidMaps = new List<PaidMapData>();
     }
 }

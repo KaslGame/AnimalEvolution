@@ -5,11 +5,13 @@ using PlayerScripts;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using YG;
 
 namespace Bootstraps
 {
     public class MainBootstrap : MonoBehaviour
     {
+        [SerializeField] private ShopInitializer _shopInitializer;
         [SerializeField] private CoinView _coinView;
         [SerializeField] private ChoicerMap _choicerMap;
         [SerializeField] private List<MapConfig> _mapConfigs = new List<MapConfig>();
@@ -48,13 +50,14 @@ namespace Bootstraps
         {
             _mapStorage = new MapStorage(GetPaidMapsName(_mapConfigs));
 
+            _shopInitializer.Initalize(_mapStorage, _coinStorage);
             _choicerMap.Initialize(_mapConfigs, _mapStorage);
             _subscribables.Add(_mapStorage);
         }
 
-        private List<string> GetPaidMapsName(List<MapConfig> allMap)
+        private List<NameScene> GetPaidMapsName(List<MapConfig> allMap)
         {
-            return allMap?.Where(map => map.PaidMap == true).Select(map => map.MapName.ToString()).ToList() ?? new List<string>();
+            return allMap?.Where(map => map.PaidMap == true).Select(map => map.MapName).ToList() ?? new List<NameScene>();
         }
     }
 }

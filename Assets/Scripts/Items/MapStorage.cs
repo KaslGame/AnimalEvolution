@@ -1,15 +1,17 @@
 using CommonInterfaces;
-using System.Collections.Generic;
+using Map;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 using YG;
 
 namespace ItemScripts
 {
     public class MapStorage : ISubscribable
     {
-        private List<string> _mapNames;
+        private List<NameScene> _mapNames;
 
-        public MapStorage(List<string> paidMapNames)
+        public MapStorage(List<NameScene> paidMapNames)
         {
             _mapNames = paidMapNames ?? throw new ArgumentNullException(nameof(paidMapNames));
         }
@@ -29,15 +31,20 @@ namespace ItemScripts
             return YG2.saves.LevelMap;
         }
 
-        public bool TryBuyMap(string name)
+        public bool TryBuyMap(NameScene name)
         {
             List<PaidMapData> paidMapDatas = YG2.saves.PaidMaps;
+
+            if (paidMapDatas.Count == 0)
+                Debug.Log("MAPs = 0");
 
             foreach (var mapData in paidMapDatas)
             {
                 if (mapData.Name == name)
                 {
                     mapData.IsPurchased = true;
+                    YG2.SaveProgress();
+
                     return true;
                 }
             }
@@ -45,7 +52,7 @@ namespace ItemScripts
             return false;
         }
 
-        public bool IsMapPurchased(string name)
+        public bool IsMapPurchased(NameScene name)
         {
             List<PaidMapData> paidMapDatas = YG2.saves.PaidMaps;
 
@@ -70,8 +77,6 @@ namespace ItemScripts
 
                 paidMapDatas.Add(newPaidMap);
             }
-
-            YG2.SaveProgress();
         }
     }
 }
