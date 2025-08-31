@@ -67,13 +67,11 @@ namespace UI.Menu
 
         private void OnReward(string id)
         {
-            int doubleReward = 2;
-
             if (id != RewardID)
                 return;
 
             _rewardButton.interactable = false;
-            _reward.text = $"{_rewarder.TotalReward * doubleReward}";
+            _reward.text = _rewarder.TotalReward.ToString();
         }
 
         private void ShowReward()

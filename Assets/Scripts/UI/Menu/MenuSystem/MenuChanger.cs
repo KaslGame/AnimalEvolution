@@ -5,6 +5,11 @@ public class MenuChanger : MonoBehaviour
 {
     [SerializeField] private List<Menu> _menus = new List<Menu>();
 
+    private void Awake()
+    {
+        SetMenu(MenuNames.MainMenu);
+    }
+
     public void SetMenu(MenuNames name)
     {
         foreach (Menu menu in _menus)

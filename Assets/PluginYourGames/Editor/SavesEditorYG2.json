@@ -1,6 +1,6 @@
 {
-    "Coins": 90,
-    "LevelMagnet": 0,
+    "Coins": 150,
+    "LevelMagnet": 3,
     "LevelMap": 0,
     "PaidMaps": [
         {
@@ -8,7 +8,7 @@
             "IsPurchased": true
         }
     ],
-    "BoostSpeed": 1,
+    "BoostSpeed": 5,
     "intExample": 5,
     "strExample": "Hello!",
     "boolExample": [
@@ -17,5 +17,5 @@
         false,
         false
     ],
-    "idSave": 12
+    "idSave": 43
 }

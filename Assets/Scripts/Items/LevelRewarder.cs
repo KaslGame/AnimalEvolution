@@ -1,5 +1,6 @@
 using CommonInterfaces;
 using System;
+using UnityEngine;
 using YG;
 
 namespace ItemScripts
@@ -49,7 +50,7 @@ namespace ItemScripts
 
         private void OnReward(string id)
         {
-            if (id == RewardID)
+            if (id != RewardID)
                 return;
 
             IncreaseCoint(TotalReward);
