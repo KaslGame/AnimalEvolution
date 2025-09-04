@@ -32,6 +32,9 @@ namespace Bootstraps
 
         [SerializeField] private RewardMenu _rewardMenu;
 
+        [SerializeField] private PlayerSFX _sfx;
+        [SerializeField] private StepSoundData _sounds;
+
         private PlayerStats _playerStats;
         private EvolutionService _changer;
 
@@ -48,6 +51,7 @@ namespace Bootstraps
             _cameraPersuer.Initialize(_player, _playerStats);
             _foodBootstrap.Initialize(_playerStats, _player);
             _boosterBootstrap.Initialize(_playerStats, _changer);
+            _sfx.Initialize(_sounds);
         }
 
         private void Start()
