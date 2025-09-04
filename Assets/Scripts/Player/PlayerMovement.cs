@@ -5,7 +5,7 @@ using YG;
 
 namespace PlayerScripts
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, IRunnable
     {
         [SerializeField] private float _speed;
 
@@ -15,6 +15,10 @@ namespace PlayerScripts
         private Vector3 _direction;
 
         private float _boostSpeed;
+
+        public event Action<bool> RunningConditionChanged;
+
+        public bool IsRun { get; private set; }
 
         private void Awake()
         {
@@ -42,6 +46,8 @@ namespace PlayerScripts
         {
             Vector3 newVelocity = new(_direction.x, -0.1f, _direction.z);
             _rigidbody.velocity = newVelocity * (_speed + _boostSpeed);
+
+            IsRun = CheckRun();
         }
 
         private void SetBoostSpeed(int levelBost)
@@ -49,6 +55,27 @@ namespace PlayerScripts
             float ratio = 2f;
 
             _boostSpeed = levelBost / ratio;
+        }
+
+        private bool CheckRun()
+        {
+            bool isRun = false;
+            float normalSpeed = 1f;
+
+            if (GetLength(_rigidbody.velocity, _rigidbody.velocity) > normalSpeed)
+                isRun = true;
+            else
+                isRun = false;
+
+            if (isRun != IsRun)
+                RunningConditionChanged?.Invoke(isRun);
+
+            return isRun;
+        }
+
+        private float GetLength(Vector3 a, Vector3 b)
+        {
+            return a.x * b.x + a.y * b.y + a.z * b.z;
         }
     }
 }

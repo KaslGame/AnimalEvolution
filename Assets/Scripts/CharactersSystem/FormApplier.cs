@@ -1,13 +1,16 @@
 using PlayerScripts;
+using System;
 using UnityEngine;
 
 namespace CharacterSystem
 {
-    public class FormApplier : MonoBehaviour, IFormApplier
+    public class FormApplier : MonoBehaviour, IFormApplier, IFormChanger
     {
         [SerializeField] private Transform _modelTransform;
         [SerializeField] private GameObject _currentModel;
         [SerializeField] private IPickUper _pickUper;
+
+        public event Action<Animator> FormChanged;
 
         public CharacterContext ApplyForm(CharacterData character)
         {
@@ -22,6 +25,9 @@ namespace CharacterSystem
             _currentModel.transform.localRotation = Quaternion.identity;
 
             PickUper pickUper = _currentModel.GetComponent<PickUper>();
+            Animator animator = _currentModel.GetComponent<Animator>();
+
+            FormChanged?.Invoke(animator);
 
             return new CharacterContext(pickUper, pickUper);
         }
