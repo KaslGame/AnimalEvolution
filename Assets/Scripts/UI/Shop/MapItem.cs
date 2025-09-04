@@ -23,6 +23,8 @@ public class MapItem : IShopItem
 
     public bool IsPurchased => _storage.IsMapPurchased(_map.MapName);
 
+    public int Price => _map.Price;
+
     public void Buy(Action<string> callback)
     {
         if (_reducer.CoinCount < _map.Price)

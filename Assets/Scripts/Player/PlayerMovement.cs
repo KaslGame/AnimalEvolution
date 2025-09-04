@@ -1,6 +1,7 @@
 using Input;
 using System;
 using UnityEngine;
+using YG;
 
 namespace PlayerScripts
 {
@@ -13,9 +14,12 @@ namespace PlayerScripts
 
         private Vector3 _direction;
 
+        private float _boostSpeed;
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            SetBoostSpeed(YG2.saves.BoostSpeed);
         }
 
         private void Update()
@@ -37,7 +41,14 @@ namespace PlayerScripts
         private void Move()
         {
             Vector3 newVelocity = new(_direction.x, -0.1f, _direction.z);
-            _rigidbody.velocity = newVelocity * _speed;
+            _rigidbody.velocity = newVelocity * (_speed + _boostSpeed);
+        }
+
+        private void SetBoostSpeed(int levelBost)
+        {
+            float ratio = 2f;
+
+            _boostSpeed = levelBost / ratio;
         }
     }
 }

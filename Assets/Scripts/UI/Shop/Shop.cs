@@ -1,9 +1,12 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+    private const string Sold = "Продано";
+
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previosButton;
     [SerializeField] private Button _upgradesButton;
@@ -13,6 +16,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private MenuChanger _changer;
 
     [SerializeField] private Image _itemIcon;
+    [SerializeField] private TMP_Text _cost;
 
     [SerializeField] private Log _log;
 
@@ -88,7 +92,14 @@ public class Shop : MonoBehaviour
 
     private void UpdateView()
     {
+        bool isPurshased = _currentItem.IsPurchased;
+
         _itemIcon.sprite = _currentItem.Icon;
-        _buyButton.interactable = !_currentItem.IsPurchased;
+        _buyButton.interactable = !isPurshased;
+
+        if (isPurshased)
+            _cost.text = Sold;
+        else
+            _cost.text = _currentItem.Price.ToString();
     }
 }
