@@ -1,5 +1,5 @@
 {
-    "Coins": 1300,
+    "Coins": 1650,
     "LevelMagnet": 1,
     "LevelMap": 0,
     "PaidMaps": [
@@ -17,5 +17,5 @@
         false,
         false
     ],
-    "idSave": 87
+    "idSave": 109
 }

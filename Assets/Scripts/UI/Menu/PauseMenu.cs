@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Menu
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class PauseMenu : MonoBehaviour, IMenu
     {
+        [SerializeField] private SettingsMenu _settingsMenu;
+        [SerializeField] private Button _settings;
         [SerializeField] private float _fadeDurarion;
-
+ 
         private CanvasGroup _group;
         private FadeAnimation _fade;
 
@@ -20,11 +24,18 @@ namespace UI.Menu
         public void Enable()
         {
             _fade.FadeIn();
+            _settings.onClick.AddListener(ShowSettings);
         }
 
         public void Disable()
         {
             _fade.FadeOut();
+            _settings.onClick.RemoveListener(ShowSettings);
+        }
+
+        private void ShowSettings()
+        {
+            _settingsMenu.Enable();
         }
     }
 }

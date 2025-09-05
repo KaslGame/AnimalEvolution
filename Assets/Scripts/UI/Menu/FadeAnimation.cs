@@ -26,7 +26,7 @@ namespace UI.Menu
 
         public void FadeOut()
         {
-            _group.DOFade(UnVisible, _duration).OnComplete(Diactive);
+            _group.DOFade(UnVisible, _duration).OnComplete(Diactive).SetUpdate(true);
         }
 
         public void FadeIn()
