@@ -77,6 +77,9 @@ namespace ItemScripts
 
                 paidMapDatas.Add(newPaidMap);
             }
+
+            if (YG2.isSDKEnabled)
+                YG2.SaveProgress();
         }
     }
 }

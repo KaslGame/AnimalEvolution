@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+public class SFXMenu : MonoBehaviour
 {
     private const string MasterVolume = nameof(MasterVolume);
     private const string MusicVolume = nameof(MusicVolume);

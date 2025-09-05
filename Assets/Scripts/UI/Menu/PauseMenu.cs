@@ -7,7 +7,7 @@ namespace UI.Menu
     [RequireComponent(typeof(CanvasGroup))]
     public class PauseMenu : MonoBehaviour, IMenu
     {
-        [SerializeField] private SettingsMenu _settingsMenu;
+        [SerializeField] private SFXMenu _SFXMenu;
         [SerializeField] private Button _settings;
         [SerializeField] private float _fadeDurarion;
  
@@ -35,7 +35,7 @@ namespace UI.Menu
 
         private void ShowSettings()
         {
-            _settingsMenu.Enable();
+            _SFXMenu.Enable();
         }
     }
 }

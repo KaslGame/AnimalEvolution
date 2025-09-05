@@ -134,9 +134,9 @@ GameObject:
   m_Component:
   - component: {fileID: 627955728521592594}
   - component: {fileID: 8844482620399702723}
-  - component: {fileID: 8399438121262249495}
+  - component: {fileID: 4728981659255848166}
   m_Layer: 0
-  m_Name: SettingsMenu
+  m_Name: SFXMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8399438121262249495
+--- !u!114 &4728981659255848166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 941325146714513696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dce84c68341fd35459d3085c51c13acf, type: 3}
+  m_Script: {fileID: 11500000, guid: e45528127bc8adb4a9f83042cdb51e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeDurarion: 0.3

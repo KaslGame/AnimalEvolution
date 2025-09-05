@@ -20,5 +20,6 @@ public class Menu : MonoBehaviour
 public enum MenuNames
 {
     MainMenu,
-    Shop
+    Shop,
+    Settings
 }
