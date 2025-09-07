@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using System;
 
 namespace PlayerScripts
 {
@@ -9,25 +9,22 @@ namespace PlayerScripts
     {
         private IRunnable _runnable;
         private AudioSource _source;
-
-        private AudioClip[] _sounds;
+        private SoundReproducer _reproducer;
+        private SoundData _data;
 
         private bool _isRun;
-
-        private int _currentIndex;
-
-        private float _elapsedTime = 0f;
-        private bool _soundPlaying = false;
 
         private void Awake()
         {
             _runnable = GetComponent<PlayerMovement>();
             _source = GetComponent<AudioSource>();
+
+            _reproducer = new SoundReproducer(_source, _data);
         }
 
-        public void Initialize(StepSoundData soundData)
+        public void Initialize(SoundData soundData)
         {
-            _sounds = soundData.Sounds;
+            _data = soundData ?? throw new ArgumentNullException(nameof(soundData));
         }
 
         private void OnEnable()
@@ -40,52 +37,18 @@ namespace PlayerScripts
             _runnable.RunningConditionChanged -= OnRunningConditionChanged;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (_isRun == false)
                 return;
 
-            if (_soundPlaying)
-            {
-                _elapsedTime -= Time.deltaTime;
-
-                if (_elapsedTime <= 0f)
-                    _soundPlaying = false;
-            }
-
-            TryPlayStep();
+            _reproducer.Update();
+            _reproducer.TryPlay();
         }
 
         private void OnRunningConditionChanged(bool isRun)
         {
             _isRun = isRun;
-        }
-
-        public void TryPlayStep()
-        {
-            float minPitch = 0.01f;
-            float maxPitch = 1f;
-
-            if (_soundPlaying) 
-                return;
-
-            AudioClip clip = _sounds[GetNextSoundIndex()];
-            _source.clip = clip;
-            _source.Play();
-
-            float pitch = Mathf.Abs(_source.pitch) < minPitch ? maxPitch : _source.pitch;
-            _elapsedTime = clip.length / pitch;
-            _soundPlaying = true;
-        }
-
-        private int GetNextSoundIndex()
-        {
-            _currentIndex++;
-
-            if (_currentIndex >= _sounds.Length)
-                _currentIndex = 0;
-
-            return _currentIndex;
         }
     }
 }

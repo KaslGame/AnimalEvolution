@@ -2764,7 +2764,7 @@ MonoBehaviour:
   _coinView: {fileID: 1614549340}
   _rewardMenu: {fileID: 1545901896}
   _sfx: {fileID: 6476828885207494094}
-  _sounds: {fileID: 11400000, guid: 56a4830699a6fe642aa7d88e1b3bb3b2, type: 2}
+  _sounds: {fileID: 11400000, guid: 95d3c5882e95f5643ae5a2da9b003b53, type: 2}
 --- !u!4 &1199119040
 Transform:
   m_ObjectHideFlags: 0

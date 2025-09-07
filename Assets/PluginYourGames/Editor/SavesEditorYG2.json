@@ -1,5 +1,5 @@
 {
-    "Coins": 70,
+    "Coins": 0,
     "LevelMagnet": 0,
     "LevelMap": 0,
     "PaidMaps": [
@@ -8,6 +8,10 @@
             "IsPurchased": false
         }
     ],
+    "MusicVolume": 1.0,
+    "SoundVolume": 0.0,
+    "MasterVolume": 1.0,
+    "IsMute": true,
     "BoostSpeed": 0,
     "intExample": 5,
     "strExample": "Hello!",
@@ -17,5 +21,5 @@
         false,
         false
     ],
-    "idSave": 118
+    "idSave": 143
 }

@@ -1,7 +1,9 @@
+using System;
 using UI.Menu;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using YG;
 
 public class SFXMenu : MonoBehaviour
 {
@@ -34,6 +36,7 @@ public class SFXMenu : MonoBehaviour
         _musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
         _masterSlider.onValueChanged.AddListener(ChangeMasterVolume);
         _toggleSFX.onValueChanged.AddListener(ToggleMasterVolume);
+        YG2.onDefaultSaves += OnResetSaves;
     }
 
     private void OnDisable()
@@ -41,13 +44,51 @@ public class SFXMenu : MonoBehaviour
         _musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
         _masterSlider.onValueChanged.AddListener(ChangeMasterVolume);
         _toggleSFX.onValueChanged.AddListener(ToggleMasterVolume);
+        YG2.onDefaultSaves -= OnResetSaves;
+    }
+
+    private void Start()
+    {
+        LoadSaveVolume();
     }
 
     public void Enable()
     {
         _settings.onClick.AddListener(HideSettings);
 
+        LoadSaveVolume();
         _fade.FadeIn();
+    }
+
+    private void LoadSaveVolume()
+    {
+        float masterVolume = YG2.saves.MasterVolume;
+        float musicVolume = YG2.saves.MusicVolume;
+        bool isMute = YG2.saves.IsMute;
+
+        if (YG2.isSDKEnabled == false)
+            return;
+
+        _lastMasterVolume = masterVolume;
+        _masterSlider.value = masterVolume;
+        _musicSlider.value = musicVolume;
+        _toggleSFX.isOn = isMute;
+
+        ChangeMusicVolume(musicVolume);
+
+        if (isMute == false)
+            ToggleMasterVolume(isMute);
+        else
+            ChangeMasterVolume(masterVolume);
+    }
+
+    private void OnResetSaves()
+    {
+        float maxVolume = 1f;
+
+        ChangeMusicVolume(maxVolume);
+        ChangeMasterVolume(maxVolume);
+        ToggleMasterVolume(true);
     }
 
     private void Disable()
@@ -67,6 +108,8 @@ public class SFXMenu : MonoBehaviour
             _mixer.audioMixer.SetFloat(MasterVolume, minValue);
 
         SetInteractableSliders(active);
+
+        YG2.saves.IsMute = active;
     }
 
     private void ChangeMasterVolume(float value)
@@ -74,11 +117,15 @@ public class SFXMenu : MonoBehaviour
         ChangeVolume(MasterVolume, value);
 
         _lastMasterVolume = value;
+
+        YG2.saves.MasterVolume = value;
     }
 
     private void ChangeMusicVolume(float value)
     {
         ChangeVolume(MusicVolume, value);
+
+        YG2.saves.MusicVolume = value;
     }
 
     private void ChangeVolume(string name, float value)
@@ -95,5 +142,7 @@ public class SFXMenu : MonoBehaviour
     private void HideSettings()
     {
         Disable();
+
+        YG2.SaveProgress();
     }
 }

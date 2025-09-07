@@ -33,7 +33,7 @@ namespace Bootstraps
         [SerializeField] private RewardMenu _rewardMenu;
 
         [SerializeField] private PlayerSFX _sfx;
-        [SerializeField] private StepSoundData _sounds;
+        [SerializeField] private SoundData _sounds;
 
         private PlayerStats _playerStats;
         private EvolutionService _changer;
