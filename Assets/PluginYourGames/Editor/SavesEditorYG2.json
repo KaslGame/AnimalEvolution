@@ -1,5 +1,6 @@
 {
-    "Coins": 0,
+    "Coins": 70,
+    "CurrentLanguage": "ru",
     "LevelMagnet": 0,
     "LevelMap": 0,
     "PaidMaps": [
@@ -21,5 +22,5 @@
         false,
         false
     ],
-    "idSave": 143
+    "idSave": 154
 }

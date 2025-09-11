@@ -31,12 +31,21 @@ namespace Bootstraps
         {
             foreach (ISubscribable subscribable in _subscribables)
                 subscribable.Subscribe();
+
+            YG2.onGetSDKData += OnLoadSDK;
         }
 
         private void OnDisable()
         {
             foreach (ISubscribable subscribable in _subscribables)
                 subscribable.Unsubscribe();
+
+            YG2.onGetSDKData -= OnLoadSDK;
+        }
+
+        private void OnLoadSDK()
+        {
+            YG2.SwitchLanguage(YG2.saves.CurrentLanguage);
         }
 
         private void CoinsInitialize()
