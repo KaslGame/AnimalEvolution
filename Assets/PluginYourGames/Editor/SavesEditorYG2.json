@@ -1,12 +1,12 @@
 {
-    "Coins": 305,
+    "Coins": 585,
     "CurrentLanguage": "ru",
     "LevelMagnet": 0,
     "LevelMap": 0,
     "PaidMaps": [
         {
             "Name": 2,
-            "IsPurchased": false
+            "IsPurchased": true
         }
     ],
     "MusicVolume": 1.0,
@@ -22,5 +22,5 @@
         false,
         false
     ],
-    "idSave": 169
+    "idSave": 201
 }
