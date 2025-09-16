@@ -12,10 +12,7 @@ namespace UI.PlayerUI
         public void Initialize(IPlayerStats stats)
         {
             Stats = stats;
-        }
 
-        public virtual void Start()
-        {
             Stats.LevelChanged += OnLevelChanged;
             Stats.ScoreChanged += OnScoreChanged;
         }

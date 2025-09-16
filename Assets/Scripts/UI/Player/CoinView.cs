@@ -14,9 +14,8 @@ namespace PlayerScripts
         private ICoinStorage _storage;
         private AudioSource _source;
 
-        private void Start()
+        private void Awake()
         {
-            _storage.CoinsChanged += OnCoinsChanged;
             _source = GetComponent<AudioSource>();
         }
 
@@ -30,6 +29,7 @@ namespace PlayerScripts
             _storage = storage ?? throw new ArgumentNullException(nameof(storage));
 
             _coin.text = _storage.CoinCount.ToString();
+            _storage.CoinsChanged += OnCoinsChanged;
         }
 
         private void OnCoinsChanged(int coins)

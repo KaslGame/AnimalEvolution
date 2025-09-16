@@ -44,7 +44,7 @@ namespace CharacterSystem
             _currentData = currentCharacter;
             CharacterContext context = _applier.ApplyForm(currentCharacter);
             context?.PickUper?.Initialize(_stats);
-            
+
             ContextChanged?.Invoke(context);
             CharacterChanged?.Invoke(currentCharacter, nextCharacter);
         }

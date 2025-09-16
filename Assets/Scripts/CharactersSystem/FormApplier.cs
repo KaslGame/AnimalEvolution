@@ -7,10 +7,9 @@ namespace CharacterSystem
     public class FormApplier : MonoBehaviour, IFormApplier, IFormChanger
     {
         [SerializeField] private Transform _modelTransform;
-        [SerializeField] private GameObject _currentModel;
-        [SerializeField] private IPickUper _pickUper;
 
         public event Action<Animator> FormChanged;
+        private GameObject _currentModel;
 
         public CharacterContext ApplyForm(CharacterData character)
         {

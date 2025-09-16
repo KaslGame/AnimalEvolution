@@ -24,11 +24,6 @@ namespace UI.PlayerUI
         public void Initialize(ICharacterChanger changer)
         {
             _changer = changer ?? throw new ArgumentNullException(nameof(changer));
-        }
-
-        public override void Start()
-        {
-            base.Start();
 
             _changer.CharacterChanged += OnCharacterChanged;
         }

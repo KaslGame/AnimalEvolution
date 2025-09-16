@@ -31,6 +31,8 @@ namespace UI.Menu
         public void SetViewer(IFoodsViewer viewer)
         {
             _viewer = viewer ?? throw new ArgumentNullException(nameof(viewer));
+
+            _viewer.FoodsEmpty += OnFoodsEmpty;
         }
 
         private void Awake()
@@ -43,11 +45,6 @@ namespace UI.Menu
         {
             _rewardButton.onClick.AddListener(ShowReward);
             YG2.onRewardAdv += OnReward;
-        }
-
-        private void Start()
-        {
-            _viewer.FoodsEmpty += OnFoodsEmpty;
         }
 
         private void OnDisable()

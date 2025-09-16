@@ -91,7 +91,7 @@ public class InputBoostrap : MonoBehaviour
 
     private void TryHideButton()
     {
-        int level = 1; // YG2.saves.LevelMagnet
+        int level = YG2.saves.LevelMagnet;
 
         if (level >= MinLevel)
             return;

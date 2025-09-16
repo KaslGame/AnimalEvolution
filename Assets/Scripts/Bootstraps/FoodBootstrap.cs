@@ -5,10 +5,11 @@ using System.Linq;
 using PlayerScripts;
 using CommonInterfaces;
 using UI.Menu;
+using System.Collections;
 
 namespace Bootstraps
 {
-    public class FoodBootstrap : MonoBehaviour
+    public class FoodBootstrap : Bootstrap
     {
         [SerializeField] private RewardMenu _rewardMenu;
         [SerializeField] private GameObject _foodsObject;
@@ -20,16 +21,9 @@ namespace Bootstraps
         private List<ISubscribable> _subscribables = new List<ISubscribable>();
         private List<IUpdateable> _updateables = new List<IUpdateable>();
 
-        private void OnEnable()
-        {
-            foreach (var subscribable in _subscribables)
-                subscribable.Subscribe();
-        }
-
         private void OnDisable()
         {
-            foreach (var subscribable in _subscribables)
-                subscribable.Unsubscribe();
+            UnSubscribe();
         }
 
         public void Update()
@@ -42,11 +36,9 @@ namespace Bootstraps
         {
             _playerStats = playerStats;
             _playerTransform = playerTransform;
-
-            FoodsViewerInit();
         }
 
-        private void FoodsViewerInit()
+        public override IEnumerator Load()
         {
             List<IFood> foodList = _foodsObject.GetComponentsInChildren<IFood>().ToList();
 
@@ -54,7 +46,24 @@ namespace Bootstraps
 
             _subscribables.Add(foodsViewer);
             _updateables.Add(foodsViewer);
+
             _rewardMenu.SetViewer(foodsViewer);
+
+            Subscribe();
+
+            yield return null;
+        }
+
+        private void Subscribe()
+        {
+            foreach (ISubscribable subscribable in _subscribables)
+                subscribable.Subscribe();
+        }
+
+        private void UnSubscribe()
+        {
+            foreach (ISubscribable subscribable in _subscribables)
+                subscribable.Unsubscribe();
         }
     }
 }
