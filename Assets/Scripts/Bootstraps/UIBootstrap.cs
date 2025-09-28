@@ -15,6 +15,7 @@ namespace Bootstraps
         [SerializeField] private CharacterBar _characterBar;
         [SerializeField] private CoinView _view;
         [SerializeField] private RewardMenu _rewardMenu;
+        [SerializeField] private PauseMenu _pauseMenu;
 
         private IPlayerStats _stats;
         private ICoinStorage _storage;
@@ -36,6 +37,7 @@ namespace Bootstraps
             _characterBar.Initialize(_changer);
             _view.Initialize(_storage);
             _rewardMenu.SetRewarder(_rewarder);
+            _pauseMenu.Initialize(_stats, _rewarder);
 
             yield return null;
         }

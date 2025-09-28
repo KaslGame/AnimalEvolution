@@ -23,6 +23,6 @@ public class ShopInitializer : MonoBehaviour
         var upgrades = new Viewer<IShopItem>(_upgradeItems);
         var maps = new Viewer<IShopItem>(_mapItems);
 
-        _view.Initalize(upgrades, maps);
+        _view.Initalize(maps, upgrades);
     }
 }

@@ -1,7 +1,7 @@
 {
-    "Coins": 70,
-    "CurrentLanguage": "",
-    "LevelMagnet": 0,
+    "Coins": 410,
+    "CurrentLanguage": "ru",
+    "LevelMagnet": 3,
     "LevelMap": 0,
     "PaidMaps": [
         {
@@ -9,9 +9,9 @@
             "IsPurchased": false
         }
     ],
-    "MusicVolume": 0.14248424768447877,
+    "MusicVolume": 0.3594838082790375,
     "SoundVolume": 0.0,
-    "MasterVolume": 1.0,
+    "MasterVolume": 0.7507944703102112,
     "IsMute": true,
     "BoostSpeed": 0,
     "intExample": 5,
@@ -22,5 +22,5 @@
         false,
         false
     ],
-    "idSave": 232
+    "idSave": 310
 }
