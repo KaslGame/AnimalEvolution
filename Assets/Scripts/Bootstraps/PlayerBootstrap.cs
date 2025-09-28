@@ -10,6 +10,7 @@ namespace Bootstraps
     {
         [SerializeField] private BoosterBoostrap _boosterBootstrap;
         [SerializeField] private FormApplier _applier;
+        [SerializeField] private PlayerAnimations _animations;
         [SerializeField] private Player _player;
 
         private PlayerStats _playerStats;
@@ -25,6 +26,7 @@ namespace Bootstraps
         {
             _boosterBootstrap.Initialize(_playerStats, _changer);
             _player.Initialize(_playerStats);
+            _animations.Initialize(_playerStats);
 
             yield return _boosterBootstrap.Load();
         }

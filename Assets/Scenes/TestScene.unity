@@ -4285,6 +4285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boosterBootstrap: {fileID: 2069702904}
   _applier: {fileID: 6476828885207494092}
+  _animations: {fileID: 6476828885207494093}
   _player: {fileID: 6121485846338162282}
 --- !u!4 &1199119040
 Transform:
